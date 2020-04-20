@@ -34,7 +34,7 @@ COPY --from=build /app/public/ ${APP_HOME}/public/
 ADD src/ ${APP_HOME}/src/
 ADD templates/ ${APP_HOME}/templates/
 
-ADD  docker/etc/ /etc/
+
 
 
 RUN mkdir -p var/cache var/log && chown -R www-data:www-data var/
