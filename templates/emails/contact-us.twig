@@ -1,0 +1,14 @@
+{% extends 'emails/mail_base.html.twig' %}
+{% block body %}
+    {% embed 'emails/blocks/1-col.twig' %}
+        {% block title %}Kontaktanfrage über Kaltwassertücher{% endblock %}
+        {% block body %}
+            <p>
+                <b>{{ from }} ({{ emailAddress }}) schreibt:</b>
+            </p>
+            <p>
+                {{ message }}
+            </p>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
