@@ -1,3 +1,14 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+guestbook:
+    path: /gästebuch
+    controller: App\Controller\web\IndexController
+    defaults:
+        route: 'guestbook'
+        
+conatct:
+    path: /kontakt
+    controller: App\Controller\web\IndexController
+    defaults:
+        route: 'contact'
