@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6df1f95f-fb39-4940-bf54-bb8531cf621b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blog-single.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../contact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../portfolio-details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../portfolio.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pricing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../services.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../team.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1awiJugcseIi83Uv1dnuUHr6wJk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6df1f95f-fb39-4940-bf54-bb8531cf621b" name="Default Changelist" comment="" />
+      <created>1587652988785</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587652988785</updated>
+      <workItem from="1587652990025" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
