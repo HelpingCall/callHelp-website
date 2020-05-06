@@ -21,9 +21,6 @@ jobs:
             -   name: Install php dependencies
                 run: composer install --prefer-dist --no-progress --no-suggest
 
-            -   name: lint yaml
-                run: bin/console lint:yaml config
-
             -   name: lint twig
                 run: bin/console lint:twig templates
 
