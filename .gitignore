@@ -12,3 +12,9 @@
 /Readme.txt
 /changelog.txt
 /.idea/.gitignore
+.idea/vcs.xml
+.idea/symfony2.xml
+.idea/php.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/callHelp-website.iml
