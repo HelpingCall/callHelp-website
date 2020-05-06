@@ -18,3 +18,12 @@
 .idea/modules.xml
 .idea/misc.xml
 .idea/callHelp-website.iml
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+symfony.lock
+symfony.lock
+symfony.lock
+composer.lock
