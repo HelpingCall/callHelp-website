@@ -21,12 +21,6 @@ jobs:
             -   name: Install php dependencies
                 run: composer install --prefer-dist --no-progress --no-suggest
 
-            -   name: Create Database
-                run: bin/console doctrine:database:create --env test
-
-            -   name: Create Database
-                run: bin/console doctrine:schema:create --env test
-
             -   name: lint yaml
                 run: bin/console lint:yaml config
 
