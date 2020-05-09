@@ -10,7 +10,7 @@ This website is based on Symfony 4.
 
 ##Update code or language
 ###Language
-1. Run 'php bin/console translation:update de --output-format yaml --force'
+1. Run 'php bin/console translation:update de --output-format yml --force'
 2. Upload it to POEditor
 
 ###Code
