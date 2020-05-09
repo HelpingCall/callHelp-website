@@ -55,10 +55,10 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="active"><a href="/"> Home</a></li>
-                                    <li><a href="/feature">Feature</a></li>
-                                    <li><a href="/services">Services</a></li>
-                                    <li><a href="/pricing">Pricing</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_index') %}active{% endif %}"><a href="/"> Home</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_feature') %}active{% endif %}"><a href="/feature">Feature</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_services') %}active{% endif %}"><a href="/services">Services</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_pricinges') %}active{% endif %}"><a href="/pricing">Pricing</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="submenu">
                                             <li><a href="/blog">Blog</a></li>
@@ -66,7 +66,7 @@
                                             <li><a href="/elements">Element</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="/contact">Contact</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_contact') %}active{% endif %}"><a href="/contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
