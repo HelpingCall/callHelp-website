@@ -1,0 +1,28 @@
+start.text-first: 'App Landingpage'
+start.heading-first: 'Starten Sie mit'
+companyname: 'Helpping Call'
+start.text-second: __start.text-second
+button.download: __button.download
+service.how-to-help: __service.how-to-help
+service.heading.1: __service.heading.1
+service.heading.1.description: __service.heading.1.description
+service.heading.2: __service.heading.2
+service.heading.2.description: __service.heading.2.description
+service.heading.3: __service.heading.3
+service.heading.3.description: __service.heading.3.description
+index.apps.heading.companyname-apps: __index.apps.heading.companyname-apps
+index.apps.heading.screenshot: __index.apps.heading.screenshot
+index.apps.description: __index.apps.description
+available-apps.heading: __available-apps.heading
+available-apps.first-text: __available-apps.first-text
+best-feature.heading: __best-feature.heading
+best-feature.sub-heading1: __best-feature.sub-heading1
+best-feature.sub-heading1.description: __best-feature.sub-heading1.description
+best-feature.sub-heading2: __best-feature.sub-heading2
+best-feature.sub-heading2.description: __best-feature.sub-heading2.description
+best-feature.sub-heading3: __best-feature.sub-heading3
+best-feature.sub-heading3.description: __best-feature.sub-heading3.description
+best-feature.sub-heading4: __best-feature.sub-heading4
+best-feature.sub-heading4.description: __best-feature.sub-heading4.description
+pricing.heading: __pricing.heading
+button.get-started: __button.get-started
