@@ -1,6 +1,6 @@
 start.text-first: 'App Landingpage'
 start.heading-first: 'Starten Sie mit'
-companyname: 'Helpping Call'
+companyname: 'Helping Call'
 start.text-second: __start.text-second
 button.download: __button.download
 service.how-to-help: __service.how-to-help
@@ -26,11 +26,11 @@ best-feature.sub-heading4: __best-feature.sub-heading4
 best-feature.sub-heading4.description: __best-feature.sub-heading4.description
 pricing.heading: __pricing.heading
 button.get-started: __button.get-started
-menuebar.home: __menuebar.home
-menuebar.feature: __menuebar.feature
-menuebar.services: __menuebar.services
-menuebar.pricing: __menuebar.pricing
-menuebar.contact: __menuebar.contact
+menuebar.home: Home
+menuebar.feature: Features
+menuebar.services: Service
+menuebar.pricing: Preise
+menuebar.contact: Kontakt
 footer.info: __footer.info
 footer.quicklinks.heading: __footer.quicklinks.heading
 footer.quicklinks.link.1: __footer.quicklinks.link.1
