@@ -6,7 +6,7 @@ This website is based on Symfony 4.
 1. Clone this repository
 2. Run `composer install`
 3. Create a `.env.local` by running `cp .env .env.local` and fill missing values.
-4. Run 'symfony server:start' in the directory of this website
+4. Run `symfony server:start` in the directory of this website
 
 ##Update code or language
 ###Language
