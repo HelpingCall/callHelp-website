@@ -1,14 +1,16 @@
 {% if padding == 1 %}
-<section class="best-pricing best-pricing2 pricing-padding2">
+
+  <section class="best-pricing best-pricing2 pricing-padding2">
     {% else %}
     <section class="best-pricing pricing-padding" data-background="assets/img/gallery/best_pricingbg.jpg">
-        {% endif %}
+{% endif %}
+
     <div class="container">
         <!-- Section Tittle -->
         <div class="row d-flex justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="section-tittle section-tittle2 text-center">
-                    <h2>Choose Your Very Best Pricing Plan.</h2>
+                    <h2>{{ 'pricing.heading'|trans }}</h2>
                 </div>
             </div>
         </div>
@@ -66,7 +68,7 @@
                             <li>10 Free Optimization</li>
                             <li>24/7  support</li>
                         </ul>
-                        <a href="/services" class="btn card-btn1">Get Started</a>
+                        <a href="/services" class="btn card-btn1">{{ 'button.get-started'|trans }}</a>
                     </div>
                 </div>
             </div>

@@ -45,20 +45,22 @@
             <div class="container">
                 <div class="row align-items-center">
                     <!-- Logo -->
-                    <div class="col-xl-2 col-lg-2 col-md-2">
+                    <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="logo">
-                            <a href="/"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
+                            <a href="/"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""> <span style='font-size:40px;font-weight: 700; color: #2b044d; font-family: "Nunito",sans-serif; margin-top:2px'>{{ 'companyname'|trans }}</span></a>
                         </div>
                     </div>
-                    <div class="col-xl-10 col-lg-10 col-md-10">
+
+                    <div class="col-xl-8 col-lg-8 col-md-8">
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_index') %}active{% endif %}"><a href="/"> Home</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_feature') %}active{% endif %}"><a href="/feature">Feature</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_services') %}active{% endif %}"><a href="/services">Services</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_pricinges') %}active{% endif %}"><a href="/pricing">Pricing</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_index') %}active{% endif %}"><a href="/"> {{ 'menuebar.home'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_feature') %}active{% endif %}"><a href="/feature">{{ 'menuebar.feature'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_services') %}active{% endif %}"><a href="/services">{{ 'menuebar.services'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_pricinges') %}active{% endif %}"><a href="/pricing">{{ 'menuebar.pricing'|trans }}</a></li>
+
                                     <li><a href="#">Pages</a>
                                         <ul class="submenu">
                                             <li><a href="/blog">Blog</a></li>
@@ -66,7 +68,9 @@
                                             <li><a href="/elements">Element</a></li>
                                         </ul>
                                     </li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_contact') %}active{% endif %}"><a href="/contact">Contact</a></li>
+
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_contact') %}active{% endif %}"><a href="/contact">{{ 'menuebar.contact'|trans }}</a></li>
+
                                 </ul>
                             </nav>
                         </div>
@@ -98,7 +102,7 @@
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p class="info1">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
+                                    <p class="info1">{{ 'footer.info'|trans }}</p>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +110,13 @@
                     <div class="col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Quick Links</h4>
+                                <h4>{{ 'footer.quicklinks.heading'|trans }}</h4>
                                 <ul>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                    <li><a href="#">Download</a></li>
-                                    <li><a href="#">Reviews</a></li>
+                                    <li><a href="#">{{ 'footer.quicklinks.link.1'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.quicklinks.link.2'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.quicklinks.link.3'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.quicklinks.link.4'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.quicklinks.link.5'|trans }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -120,13 +124,13 @@
                     <div class="col-lg-2 col-md-4 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Support</h4>
+                                <h4>{{ 'footer.support.heading'|trans }}</h4>
                                 <ul>
-                                    <li><a href="#">Report a bug</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">{{ 'footer.support.link.1'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.support.link.2'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.support.link.3'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.support.link.4'|trans }}</a></li>
+                                    <li><a href="#">{{ 'footer.support.link.5'|trans }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,17 +138,17 @@
                     <div class="col-lg-3 col-md-6 col-sm-8">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Newsletter</h4>
+                                <h4{{ 'footer.newsletter.heading'|trans }}</h4>
                                 <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear </p>
+                                    <p>{{ 'footer.newsletter.decription'|trans }}</p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
                                         <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative mail_part" novalidate="true">
-                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder=" Email Address " class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Email Address '">
+                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder=" {{ 'forms.mail'|trans }}" class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = ' {{ 'forms.mail'|trans }} '">
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm"><img src="assets/img/shape/form_icon.png" alt=""></button>
+                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm"><img src="{{asset('assets/img/shape/form_icon.png')}}" alt=""></button>
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
