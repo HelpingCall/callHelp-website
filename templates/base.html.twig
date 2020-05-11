@@ -56,10 +56,11 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="active"><a href="/"> {{ 'menuebar.home'|trans }}</a></li>
-                                    <li><a href="/feature"> {{ 'menuebar.feature'|trans }}</a></li>
-                                    <li><a href="/services"> {{ 'menuebar.services'|trans }}</a></li>
-                                    <li><a href="/pricing"> {{ 'menuebar.pricing'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_index') %}active{% endif %}"><a href="/"> {{ 'menuebar.home'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_feature') %}active{% endif %}"><a href="/feature">{{ 'menuebar.feature'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_services') %}active{% endif %}"><a href="/services">{{ 'menuebar.services'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_pricinges') %}active{% endif %}"><a href="/pricing">{{ 'menuebar.pricing'|trans }}</a></li>
+
                                     <li><a href="#">Pages</a>
                                         <ul class="submenu">
                                             <li><a href="/blog">Blog</a></li>
@@ -67,7 +68,9 @@
                                             <li><a href="/elements">Element</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="/contact"> {{ 'menuebar.contact'|trans }}</a></li>
+
+                                    <li class="{% if app.request.attributes.get('_route') is same as('web_contact') %}active{% endif %}"><a href="/contact">{{ 'menuebar.contact'|trans }}</a></li>
+
                                 </ul>
                             </nav>
                         </div>
