@@ -4,4 +4,10 @@
 
 login:
   path: /login
-  controller: App\Controller\SecurityController
+  controller: App\Controller\SecurityController::login
+  defaults:
+    route: 'login'
+
+index:
+  path: /
+  controller: App\Controller\web\IndexController

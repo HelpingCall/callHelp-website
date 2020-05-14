@@ -2,15 +2,32 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    private $userPasswordEncoder;
+
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $userPasswordEncoder)
+    {
+        $this->userPasswordEncoder = $userPasswordEncoder;
+        $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @Route("/login", name="app_login", methods={"GET", "POST"})
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -31,6 +48,21 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/register/", name="register", methods={"GET", "POST"})
+     */
+    public function register(Request $request): Response
+    {
+        $admin = new User();
+        $admin->setEmail('demo@kaltwassertuch.de');
+        $encodedPassword = $this->userPasswordEncoder->encodePassword($admin, 'demo');
+        $admin->setPassword($encodedPassword);
+
+        $this->entityManager->persist($admin);
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('login');
     }
 }
