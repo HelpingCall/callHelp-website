@@ -57,7 +57,7 @@ class SecurityController extends AbstractController
     {
         $admin = new User();
         $admin->setEmail('demo@kaltwassertuch.de');
-        $encodedPassword = $this->userPasswordEncoder->encodePassword($admin, 'demo');
+        $encodedPassword = $this->userPasswordEncoder->encodePassword($admin, '');
         $admin->setPassword($encodedPassword);
 
         $this->entityManager->persist($admin);
