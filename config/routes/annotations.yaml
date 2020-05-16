@@ -3,15 +3,15 @@ web_controllers:
     type: annotation
     name_prefix: web_
  
-#admin_controllers:
-#    resource: ../../src/Controller/admin/
-#    type: annotation
-#    name_prefix: admin_
+admin_controllers:
+    resource: ../../src/Controller/admin/
+    type: annotation
+    name_prefix: admin_
 
-#profile_controllers:
-#    resource: ../../src/Controller/profile/
-#    type: annotation
-#    name_prefix: profile_
+profile_controllers:
+    resource: ../../src/Controller/profile/
+    type: annotation
+    name_prefix: profile_
 
 kernel:
     resource: ../../src/Kernel.php

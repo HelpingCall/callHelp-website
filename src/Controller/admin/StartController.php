@@ -2,18 +2,19 @@
 
 namespace App\Controller\admin;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Flex\Response;
 
 class StartController extends AbstractController
 {
     /**
-     * @Route("/start", name="start", methods={"POST"})
+     * @Route("/start", name="start", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function start(Request $request): Response
+    public function start(): Response
     {
-        return $this->render(':web/index:_applics-apps.html.twig');
+        return $this->render('web/index/index.html.twig');
     }
 }
