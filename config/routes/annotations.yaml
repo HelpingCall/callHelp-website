@@ -4,11 +4,13 @@ web_controllers:
     name_prefix: web_
  
 admin_controllers:
+    prefix: /admin
     resource: ../../src/Controller/admin/
     type: annotation
     name_prefix: admin_
 
 profile_controllers:
+    prefix: /profile
     resource: ../../src/Controller/profile/
     type: annotation
     name_prefix: profile_

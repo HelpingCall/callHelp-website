@@ -49,14 +49,14 @@ class SecurityController extends AbstractController
      */
     public function start(): RedirectResponse
     {
-        $handle = fopen('acces.txt', 'w+');
-        fwrite($handle, $this->isGranted('ROLE_ADMIN'));
-        if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('admin_start');
-        }
 
         if ($this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('profile_start');
         }
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin_start');
+        }
+
+
     }
 }
