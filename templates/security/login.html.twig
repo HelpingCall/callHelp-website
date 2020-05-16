@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'sign-ing.title' |trans}}{% endblock %}
+
+{% block body %}
+<main>
+    <div class="say-something-aera pt-90 pb-90 fix">
+        <div class="container">
+            <div class="row justify-content-center">
+        <div class="col-6 col-sm-6 align-center align-content-center">
+
+
+            <form method="post">
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        {{'sign-in.already-signed-in'}} {{ app.user.username }}, <a href="{{ path('admin_app_logout') }}">{{'user.logout' |trans}}</a>
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 mb-3 font-weight-normal">{{ 'sign-in.heading'|trans }}</h1>
+                <div class="form-group">
+                    <label for="inputEmail">{{ 'forms.email-label'|trans }}</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="{{ 'forms.email-placeholder'|trans }}" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">{{ 'forms.password-label'|trans }}</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="{{ 'forms.password-label'|trans }}" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+
+
+                <button class="btn btn-lg btn-primary" type="submit">
+                    {{'button.sign-in' | trans}}
+                </button>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
