@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="ftco-section">
+    <section class="ftco-section pt-90 pb-90 fix">
         <div class="container">
             <div class="row d-md-flex">
                 <div class="col">
                     <div class="alert alert-danger" role="alert">
-                        {{ message }}
-                        <p><a href="{{ path('web_register') }}" class="btn btn-success">Erneut registrieren</a></p>
+                        <p>
+                            {{ 'register.error-message'|trans }}
+                            <ul>
+                                {% for error in errors %}
+                                    <li>{{ errors|replace({'ERROR:':''}) }}</li>
+
+                                {% endfor %}
+                            </ul>
+                        </p>
+
+
+                        <p><a href="{{ path('web_register') }}" class="btn btn-success">{{'register.retry'|trans}}</a></p>
                     </div>
                 </div>
             </div>

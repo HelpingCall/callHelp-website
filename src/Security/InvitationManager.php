@@ -6,7 +6,6 @@ use App\Entity\Invitation;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -48,13 +47,11 @@ class InvitationManager
 
     public function register(Invitation $invitation)
     {
+        $invitation->setCreatedAt(new \DateTime());
         $this->entityManager->persist($invitation);
         $this->entityManager->flush();
 
-        try {
-            $this->sendConfirmationEmail($invitation);
-        } catch (TransportExceptionInterface $e) {
-        }
+        $this->sendConfirmationEmail($invitation);
     }
 
     private function sendConfirmationEmail(Invitation $invitation)
@@ -74,10 +71,7 @@ class InvitationManager
                 'confirmLink' => $confirmLink,
             ]);
 
-        try {
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-        }
+        $this->mailer->send($email);
 
         $invitation->setToken($uniqueId);
         $this->entityManager->flush();
@@ -86,6 +80,7 @@ class InvitationManager
     public function verifyEmail(Invitation $invitation, string $password)
     {
         $invitation->setVerifiedAt(new \DateTime());
+        $invitation->setRoles(['User']);
         $this->entityManager->flush();
 
         /**
@@ -93,8 +88,10 @@ class InvitationManager
          **/
         $user = new User();
         $user->setEmail($invitation->getEmail());
+        $user->setCreatedAt(new \DateTime());
         $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $password);
         $user->setRoles(['User']);
         $user->setPassword($encodedPassword);
+        $this->entityManager->flush();
     }
 }

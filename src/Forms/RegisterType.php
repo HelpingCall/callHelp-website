@@ -19,7 +19,7 @@ class RegisterType extends AbstractType
             ->add('housenumber')
             ->add('zipcode')
             ->add('city')
-            ->add('phone');
+            ->add('telephonenumber');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

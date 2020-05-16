@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 class RegisterController extends AbstractController
 {
@@ -17,10 +19,17 @@ class RegisterController extends AbstractController
      */
     private $invitationManager;
 
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
     public function __construct(
-        InvitationManager $invitationManager
+        InvitationManager $invitationManager,
+        RouterInterface $router
     ) {
         $this->invitationManager = $invitationManager;
+        $this->router = $router;
     }
 
     /**
@@ -44,8 +53,10 @@ class RegisterController extends AbstractController
         }
 
         if (!$form->isValid()) {
+
+
             return $this->render('web/register/error.html.twig', [
-                'message' => 'Da ist etwas schiefgelaufen, probiere es doch noch einmal',
+                'errors' => $form->getErrors(true, false),
             ]);
         }
 
@@ -62,13 +73,20 @@ class RegisterController extends AbstractController
      */
     public function confirm(Invitation $invitation, Request $request): Response
     {
-        if (!empty($request)) {
+        $handle = fopen('request.txt', 'w+');
+        fwrite($handle, $request);
+        if (!empty($request) and null != $request->get('password')) {
             $password = $request->get('password');
             $this->invitationManager->verifyEmail($invitation, $password);
 
             return $this->render('web/register/confirmation.html.twig');
         } else {
-            return $this->render('web/register/setPassword.html.twig');
+            $confirmLink = $this->router->generate('web_confirm', ['token' => $request->get('token')],
+                UrlGeneratorInterface::ABSOLUTE_URL);
+
+            return $this->render('web/register/setPassword.html.twig', [
+                    'link' => $confirmLink,
+            ]);
         }
     }
 }
