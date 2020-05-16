@@ -5,6 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^1.10",
         "friendsofphp/php-cs-fixer": "^2.16",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "5.0.*",
@@ -20,6 +21,7 @@
         "symfony/security-bundle": "5.0.*",
         "symfony/translation": "5.0.*",
         "symfony/twig-bundle": "5.0.*",
+        "symfony/validator": "5.0.*",
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {

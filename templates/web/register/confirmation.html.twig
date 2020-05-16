@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row d-md-flex">
+                <div class="col">
+                    <div class="alert alert-success" role="alert">
+                        <p>{{ 'register.confirmation.text'|trans }}</p>
+                        <p><a href="{{ path('web_index') }}" class="btn btn-success">{{ 'register.confirmation.button'|trans }}</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
