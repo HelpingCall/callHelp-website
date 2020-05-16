@@ -8,12 +8,12 @@ This website is based on Symfony 4.
 3. Create a `.env.local` by running `cp .env .env.local` and fill missing values.
 4. Run `symfony server:start` in the directory of this website
 
-##Update code or language
-###Language
+## Update code or language
+### Language
 1. Run `php bin/console translation:update de --output-format yml --force`
 2. Upload it to POEditor
 
-###Code
+### Code
 Before Pushing it to GitHub do:
 1. Create a new Branch
 2. Run cs fixer `php vendor/bin/php-cs-fixer fix` optional `--dry-run`
