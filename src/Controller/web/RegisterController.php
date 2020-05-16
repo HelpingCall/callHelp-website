@@ -71,8 +71,7 @@ class RegisterController extends AbstractController
      */
     public function confirm(Invitation $invitation, Request $request): Response
     {
-        $handle = fopen('request.txt', 'w+');
-        fwrite($handle, $request);
+
         if (!empty($request) and null != $request->get('password')) {
             $password = $request->get('password');
             $this->invitationManager->verifyEmail($invitation, $password);
