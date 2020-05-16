@@ -49,14 +49,11 @@ class SecurityController extends AbstractController
      */
     public function start(): RedirectResponse
     {
-
         if ($this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('profile_start');
         }
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_start');
         }
-
-
     }
 }
