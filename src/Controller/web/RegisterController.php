@@ -53,8 +53,6 @@ class RegisterController extends AbstractController
         }
 
         if (!$form->isValid()) {
-
-
             return $this->render('web/register/error.html.twig', [
                 'errors' => $form->getErrors(true, false),
             ]);
