@@ -88,10 +88,12 @@ class InvitationManager
          **/
         $user = new User();
         $user->setEmail($invitation->getEmail());
+
         $user->setCreatedAt(new \DateTime());
         $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $password);
         $user->setRoles(['User']);
         $user->setPassword($encodedPassword);
+        $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
 }
