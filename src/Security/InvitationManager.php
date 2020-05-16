@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Customer;
 use App\Entity\Invitation;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -80,8 +81,6 @@ class InvitationManager
     public function verifyEmail(Invitation $invitation, string $password)
     {
         $invitation->setVerifiedAt(new \DateTime());
-        $invitation->setRoles(['User']);
-        $this->entityManager->flush();
 
         /**
          * @var User
@@ -94,6 +93,24 @@ class InvitationManager
         $user->setRoles(['User']);
         $user->setPassword($encodedPassword);
         $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
+        /**
+         * @var Customer
+         */
+        $customer = new Customer();
+
+        $customer->setFirstname($invitation->getFirstname());
+        $customer->setLastname($invitation->getLastname());
+        $customer->setEmail($invitation->getEmail());
+        $customer->setCity($invitation->getCity());
+        $customer->setStreet($invitation->getStreet());
+        $customer->setTelephonenumber($invitation->getTelephonenumber());
+        $customer->setUserID($user->getId());
+
+        $this->entityManager->persist($customer);
+
+        $this->entityManager->remove($invitation);
         $this->entityManager->flush();
     }
 }
