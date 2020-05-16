@@ -26,7 +26,7 @@ final class IndexController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        return $this->render('index/index.html.twig');
+        return $this->render('web/index/index.html.twig');
     }
 
     /**
