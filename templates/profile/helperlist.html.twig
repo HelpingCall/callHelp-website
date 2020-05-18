@@ -1,0 +1,46 @@
+{% extends 'profile/profile-base.html.twig' %}
+{% block body %}
+    <main>
+
+        <!-- Services Area Start -->
+        <section class="service-area services-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <a href="{{ path('profile_helper_create') }}" class="btn btn-success">{{'profile.create-new'|trans}}</a>
+
+                        <br/><br/>
+
+                        {% if helpers|length > 0 %}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">{{'profile.helper.firstname' | trans}}</th>
+                                    <th scope="col">{{'profile.helper.lastname' | trans}}</th>
+                                    <th scope="col">{{'profile.helper.mail' | trans}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for helper in helpers %}
+                                    <tr>
+
+                                        <td>{{ helper.firstname }}</td>
+                                        <td>{{ helper.lastname }}</td>
+                                        <td>{{ helper.mail }}</td>
+                                        <td>
+                                            <a href="{{ path('profile_helper_edit', {'id': helper.id}) }}" class="btn btn-sm btn-warning">{{'profile.edit'|trans}}</a>
+                                            <a href="{{ path('profile_helper_delete', {'id': helper.id}) }}" class="btn btn-sm btn-danger">{{'profile.delete'|trans}}</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning">{{'profile.nothing-found'|trans}}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

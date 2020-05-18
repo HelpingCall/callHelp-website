@@ -56,11 +56,11 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_index') %}active{% endif %}"><a href="{{ path('web_index') }}"> {{ 'menuebar.home'|trans }}</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_feature') %}active{% endif %}"><a href="{{ path('web_feature') }}">{{ 'menuebar.feature'|trans }}</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_services') %}active{% endif %}"><a href="{{ path('web_services') }}">{{ 'menuebar.services'|trans }}</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('web_pricinges') %}active{% endif %}"><a href="{{ path('web_pricings') }}">{{ 'menuebar.pricing'|trans }}</a></li>
-                                    <li class="{% if app.request.attributes.get('_route') is same as('login') %}active{% endif %}"><a href="{{ path('login') }}">{{ 'menuebar.login'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_start') %}active{% endif %}"><a href="{{path('profile_start')}}"> {{ 'menuebar.profile.home'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_helperlist') %}active{% endif %}"><a href="{{path('profile_helperlist')}}">{{ 'menuebar.profile.helper'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_billing') %}active{% endif %}"><a href="{{ path('profile_billing') }}">{{ 'menuebar.profile.billing'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_personaldata') %}active{% endif %}"><a href="{{path('profile_personaldata')}}">{{ 'menuebar.profile.personaldata'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('logout') %}active{% endif %}"><a href="{{ path('logout') }}">{{ 'menuebar.profile.logout'|trans }}</a></li>
 
                                 </ul>
                             </nav>
