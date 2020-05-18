@@ -90,7 +90,7 @@ class InvitationManager
 
         $user->setCreatedAt(new \DateTime());
         $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $password);
-        $user->setRoles(['User']);
+        $user->setRoles(['ROLE_USER']);
         $user->setPassword($encodedPassword);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
