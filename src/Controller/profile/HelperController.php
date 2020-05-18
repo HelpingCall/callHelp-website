@@ -15,7 +15,7 @@ class HelperController extends AbstractController
      */
     public function start(): Response
     {
-        return $this->render('profile/helperlist.html.twig');
+        return $this->render('profile/helper/list.html.twig');
     }
 
     /**
