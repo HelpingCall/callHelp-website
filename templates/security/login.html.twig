@@ -17,7 +17,7 @@
 
                 {% if app.user %}
                     <div class="mb-3">
-                        {{'sign-in.already-signed-in'}} {{ app.user.username }}, <a href="{{ path('logout') }}">{{'user.logout' |trans}}</a>
+                        {{'sign-in.already-signed-in'}} {{ app.user.username }}, <a href="{{ path('admin_app_logout') }}">{{'user.logout' |trans}}</a>
                     </div>
                 {% endif %}
 

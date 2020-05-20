@@ -8,11 +8,10 @@ web_controllers:
 #    type: annotation
 #    name_prefix: admin_
 
-profile_controllers:
-    resource: ../../src/Controller/profile/
-    type: annotation
-    name_prefix: profile_
-    prefix: /profile
+#profile_controllers:
+#    resource: ../../src/Controller/profile/
+#    type: annotation
+#    name_prefix: profile_
 
 kernel:
     resource: ../../src/Kernel.php
