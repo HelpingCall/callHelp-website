@@ -5,12 +5,10 @@ namespace App\Controller\RestApi;
 use App\Entity\Helper;
 use App\Entity\User;
 use App\Services\GeoCoderApi;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
 class APIController extends AbstractController
