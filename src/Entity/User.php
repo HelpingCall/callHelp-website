@@ -37,7 +37,6 @@ class User implements UserInterface
     private $password;
 
     /**
-
      * @ORM\OneToMany(targetEntity=Helper::class, mappedBy="userid")
      */
     private $helpers;
@@ -46,11 +45,6 @@ class User implements UserInterface
     {
         $this->helpers = new ArrayCollection();
     }
-
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
-
 
     public function getId(): ?int
     {
@@ -130,7 +124,6 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-
     /**
      * @return Collection|Helper[]
      */
@@ -158,17 +151,5 @@ class User implements UserInterface
                 $helper->setUserid(null);
             }
         }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-
-        return $this;
     }
 }

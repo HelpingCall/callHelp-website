@@ -103,12 +103,6 @@ class Invitation
     private $verifiedAt;
 
     /**
-     * @var DateTime|null
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
      * @var string|null
      * @ORM\Column(type="string", length=255)
      * @ORM\Column(type="string", length=255)
@@ -238,18 +232,6 @@ class Invitation
     public function setVerifiedAt(?\DateTimeInterface $verifiedAt): self
     {
         $this->verifiedAt = $verifiedAt;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

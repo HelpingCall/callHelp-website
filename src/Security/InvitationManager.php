@@ -48,7 +48,6 @@ class InvitationManager
 
     public function register(Invitation $invitation)
     {
-        $invitation->setCreatedAt(new \DateTime());
         $this->entityManager->persist($invitation);
         $this->entityManager->flush();
 
@@ -88,7 +87,6 @@ class InvitationManager
         $user = new User();
         $user->setEmail($invitation->getEmail());
 
-        $user->setCreatedAt(new \DateTime());
         $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $password);
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($encodedPassword);
@@ -106,6 +104,8 @@ class InvitationManager
         $customer->setCity($invitation->getCity());
         $customer->setStreet($invitation->getStreet());
         $customer->setTelephonenumber($invitation->getTelephonenumber());
+        $customer->setHousenumber($invitation->getHousenumber());
+        $customer->setZipcode($invitation->getZipcode());
         $customer->setUserID($user->getId());
 
         $this->entityManager->persist($customer);
