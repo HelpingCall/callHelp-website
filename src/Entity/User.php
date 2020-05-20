@@ -41,6 +41,12 @@ class User implements UserInterface
      */
     private $helpers;
 
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $jwt;
+
     public function __construct()
     {
         $this->helpers = new ArrayCollection();
@@ -151,5 +157,17 @@ class User implements UserInterface
                 $helper->setUserid(null);
             }
         }
+    }
+
+    public function getJwt(): ?string
+    {
+        return $this->jwt;
+    }
+
+    public function setJwt(string $jwt): self
+    {
+        $this->jwt = $jwt;
+
+        return $this;
     }
 }
