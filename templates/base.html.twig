@@ -176,7 +176,7 @@
 </footer>
 
 <!-- JS here -->
-
+{% block javascripts_footer %}
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{asset('assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
@@ -212,6 +212,7 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{asset('assets/js/plugins.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
-
+<script src="{{asset('assets/js/jquery.steps.min.js')}}"></script>
+{% endblock %}
 </body>
 </html>

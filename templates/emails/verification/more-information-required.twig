@@ -1,0 +1,54 @@
+{% extends 'emails/mail_base.html.twig' %}
+{% block body %}
+    {% embed 'emails/blocks/1-col.twig' %}
+        {% block title %}{{ 'mail.acount-confirm.speech'|trans }}  {{ account.lastname }}{% endblock %}
+        {% block body %}
+            <p>
+                <b>{{ 'mail.acount-information-required.head'|trans }} </b>
+            </p>
+            <p>
+                {{ 'mail.acount-information-required.head.text.frist'|trans }}
+            </p>
+            <p>
+                <b>{{ 'mail.acount-information-required.text.second'|trans }} </b><br />
+                {{ 'mail.acount-information-required.text.second.item1'|trans }} <br />
+                {{ 'mail.acount-information-required.text.second.item2'|trans }}<br />
+            </p>
+            <p>
+                {{ 'mail.acount-information-required.text.thrid'|trans }}<br/>
+                {{ 'mail.acount-information-required.text.thrid.item1'|trans }}<br />
+                {{ 'mail.acount-information-required.text.thrid.item2'|trans }}<br />
+            </p>
+            <h4> {{ 'mail.acount-information-required.text.fourth'|trans }}</h4>
+            <p>
+                {{ 'mail.acount-information-required.text.fiths'|trans }}</br>
+                <b> {{ 'mail.acount-information-required.text.fiths.second'|trans }}</b> {{ 'mail.acount-information-required.text.fiths.third'|trans }}
+            </p>
+            <h4> {{ 'mail.acount-information-required.heading-how-could-you-help'|trans }}</h4>
+            <p>{{ 'mail.acount-information-required.how-could-you-help.text'|trans }}</p>
+            {% if account.company %}
+                <p>
+                    {{ 'mail.acount-information-required.heading-how-could-you-help.text-company'|trans }} <b>{{ account.company }} in {{ account.city }}</b> gehören.
+                </p>
+                <p>
+                    {{ 'mail.acount-information-required.heading-how-could-you-help.data-needed'|trans }}<br />
+                    <b>{{ 'mail.acount-information-required.heading-how-could-you-help.company-name'|trans }}</b><br />
+                    <b>{{ 'mail.acount-information-required.heading-how-could-you-help.name-of-head'|trans }}</b><br />
+                    <b>{{ 'mail.acount-information-required.heading-how-could-you-help.email-adress'|trans }}</b> {{ 'mail.acount-information-required.heading-how-could-you-help.email-adress-bold'|trans }}<br />
+                    <b>{{ 'mail.acount-information-required.heading-how-could-you-help.reason-bold'|trans }}</b> {{ 'mail.acount-information-required.heading-how-could-you-help.reason'|trans }}<br />
+                    </b>
+                </p>
+            {% else %}
+                <p>
+                    {{ 'mail.acount-information-required.heading-how-could-you-help.text-private'|trans }} </p> <br/>
+                {{ 'mail.acount-information-required.heading-how-could-you-help.text-private.data-needed'|trans }} <br />
+                     <b>{{ 'mail.acount-information-required.heading-how-could-you-help.text-private.reason'|trans }} </b><br />
+                </p>
+            {% endif %}
+            <p>
+                {{ 'mail.acount-information-required.greetings'|trans }} <br />
+                {{ 'mail.acount-information-required.remedymatch'|trans }}
+            </p>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
