@@ -59,7 +59,7 @@ class APIController extends AbstractController
             $name = $helper->getFirstname().' '.$helper->getLastname();
             mail($email, 'Ein Nutzer braucht Ihre Hilfe', $this->renderView('emails/helper/helper-mail.html.twig', [
                 'name' => $name,
-                'message' => $result,
+                'place' => $result,
             ]), $header);
         }
 
