@@ -11,3 +11,9 @@ login:
 index:
   path: /
   controller: App\Controller\web\IndexController
+
+logout:
+  path: /logout
+  controller: App\Controller\SecurityController::logout
+  defaults:
+    route: 'logout'
