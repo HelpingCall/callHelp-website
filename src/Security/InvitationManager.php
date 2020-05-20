@@ -77,13 +77,16 @@ class InvitationManager extends AbstractController
     public function verifyEmail(Invitation $invitation, string $password)
     {
         $invitation->setVerifiedAt(new \DateTime());
-
+        try {
+            $token = bin2hex(random_bytes(256));
+        } catch (\Exception $e) {
+        }
         /**
          * @var User
          **/
         $user = new User();
         $user->setEmail($invitation->getEmail());
-
+        $user->setJwt($token);
         $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $password);
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($encodedPassword);
