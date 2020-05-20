@@ -15,6 +15,8 @@ class StartController extends AbstractController
      */
     public function start(): Response
     {
+
         return $this->render('profile/start.html.twig');
+
     }
 }

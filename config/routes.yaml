@@ -8,6 +8,18 @@ login:
   defaults:
     route: 'login'
 
+logout:
+  path: /logout
+  controller: App\Controller\SecurityController::logout
+  defaults:
+    route: 'logout'
+
 index:
   path: /
   controller: App\Controller\web\IndexController
+
+select:
+  path: /select
+  controller: App\Controller\SecurityController::start
+  defaults:
+    route: 'select'

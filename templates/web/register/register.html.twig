@@ -1,0 +1,327 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main>
+
+        <section class="best-features-area section-padd4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card" id="register-info-card">
+                        <div class="card-body">
+                            <h4>{{ 'register.disclaimer-heading'|trans }}</h4>
+                            <p>{{ 'register.disclaimer'|trans }}
+                            </p>
+                            <p>
+                                <span id="registration-intro" class="btn btn-success btn-lg btn-block">{{ 'register.button.start'|trans }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" id="register-card">
+                        <div class="card-body">
+                            <form action="{{ path('web_register_post') }}" method="post" id="wizard" class="form">
+                                <!-- SECTION 1 -->
+                                <h2></h2>
+                                <section>
+                                    <div class="inner">
+                                        <div class="form-content">
+                                            <div class="form-header">
+                                                <h3 style="color:#000;">{{ 'register.personal-data-heading'|trans }}</h3>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="firstname">{{ 'register.firstname'|trans }}</label>
+                                                    <input type="text" id="firstname" name="firstname"
+                                                           placeholder="{{ 'register.firstname'|trans }}"
+                                                           class="form-control required">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="lastname">{{ 'register.lastname'|trans }}</label>
+                                                    <input type="text" id="lastname" placeholder="{{ 'register.lastname'|trans }}"
+                                                           name="lastname"
+                                                           class="form-control required">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col form-group">
+                                                    <label for="email">{{ 'register.email'|trans }}</label>
+                                                    <input type="email" id="email" name="email" placeholder="{{ 'register.email'|trans }}"
+                                                           class="form-control required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- SECTION 2 -->
+                                <h2></h2>
+                                <section>
+                                    <div class="inner">
+                                        <div class="form-content">
+                                            <div class="form-header">
+                                                <h3 style="color:#000;">{{ 'register.contact-information-heading'|trans }}</h3>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-9 form-group">
+                                                    <label for="street">{{ 'register.street'|trans }}</label>
+                                                    <input type="text" id="street" name="street"
+                                                           placeholder="{{ 'register.street'|trans }}"
+                                                           class="form-control required">
+                                                </div>
+                                                <div class="col-3 form-group">
+                                                    <label for="housenumber">&nbsp;</label>
+                                                    <input type="text" id="housenumber" name="housenumber" maxlength="5"
+                                                           placeholder="{{ 'register.housenumber'|trans }}" class="form-control required">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-12 form-group">
+                                                    <label for="zipcode">{{ 'register.postal-code'|trans }}</label>
+                                                    <input type="text" placeholder="{{ 'register.postal-code-short'|trans }}" name="zipcode" id="zipcode" maxlength="5"
+                                                           class="form-control required">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-12 form-group">
+                                                    <label for="city">{{ 'register.city'|trans }}</label>
+                                                    <input type="text" id="city" name="city" placeholder="{{ 'register.city'|trans }}"
+                                                           class="form-control required">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="telephonenumber">{{ 'register.telephone-number'|trans }}</label>
+                                                    <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1">+49</span>
+                                                    </div>
+                                                    <input type="text" id="telephonenumber" name="telephonenumber" maxlength="15"
+                                                           placeholder="{{ 'register.telephone-number-placeholder'|trans }}"
+                                                           class="form-control required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+        var form = $("#wizard");
+        var stepChanged = false;
+
+        $(function () {
+            $('#registration-intro').click(function () {
+                $('#register-info-card').hide();
+                $('#register-card').show();
+
+            });
+
+
+            $.validator.addMethod('phonecheck', function (value, element) {
+                var regex = /^\(?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})[-. ]?([0-9]{2})?([0-9]{1})?$/;
+                var regex2 = /^\(?([0-9]{4})\)?[-. ]?([0-9]{7})([0-9]{1})?$/;
+                var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})[-. ]?([0-9]{2})?([0-9]{1})?$/;
+                var phoneno2 = /^\+?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{7})[-. ]?([0-9]{1})?$/;
+                if (regex.test(value) || phoneno.test(value) || regex2.test(value) || phoneno2.test(value)) {
+
+                    return true;
+                } else {
+
+                    return false;
+                }
+            }, "{{ 'register.telephone-number-error'|trans }}");
+
+            $.validator.addMethod('zipcodeCheck', function (value, element) {
+                var regex = /^[0-9]{5}$/
+
+                if (regex.test(value)) {
+                    return true;
+
+                } else {
+                    return false;
+                }
+
+
+            }, "{{ 'register.postal-code-error'|trans }}");
+
+            $.validator.messages.required = "{{ 'register.empty-error'|trans }}";
+            $.validator.messages.email = "{{ 'register.email-error'|trans }}";
+            $.validator.setDefaults({
+                highlight: function (element) {
+                    $(element).closest('.form-group').find(".form-control:first").addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-group').find(".form-control:first").removeClass('is-invalid');
+                    $(element).closest('.form-group').find(".form-control:first").addClass('is-valid');
+                },
+                errorElement: 'span',
+                errorClass: 'invalid-feedback',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                rules: {
+                    phone: {
+                        phonecheck: true
+                    },
+                    zipcode: {
+                        zipcodeCheck: true
+                    }
+                }
+            });
+
+            $("#wizard").steps({
+                headerTag: "h2",
+                bodyTag: "section",
+                enableAllSteps: true,
+                transitionEffect: "fade",
+                transitionEffectSpeed: 300,
+                labels: {
+                    finish: "{{ 'register.button.finish'|trans }}",
+                    next: "{{ 'register.button.next'|trans }}",
+                    previous: "{{ 'register.button.previous'|trans }}"
+                },
+                onInit: function (event, currentIndex) {
+                    $('.actions ul li a').addClass('btn btn-primary btn-lg');
+                    $('.actions ul li:last-child a').removeClass('btn-primary').addClass('btn-success');
+                },
+                onFinished: function (event, currentIndex) {
+                    document.getElementById("wizard").submit();
+                },
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    if (currentIndex > newIndex) {
+                        stepChanged = true;
+                        return true;
+                    }
+                    if (currentIndex < newIndex) {
+                        // To remove error styles
+                        form.find(".body:eq(" + newIndex + ") label.error").remove();
+                        form.find(".body:eq(" + newIndex + ") .error").removeClass("form-control is-invalid");
+                    }
+
+                    stepChanged = form.valid();
+                    return form.valid();
+                },
+                onFinishing: function (event, currentIndex) {
+                    form.validate().settings.ignore = ":disabled";
+
+                    $('#ftco-loader').addClass('show');
+
+                    return form.valid();
+                }
+            });
+            $('.wizard > .steps li a').click(function () {
+                if (stepChanged) {
+                    $(this).parent().addClass('checked');
+                    $(this).parent().prevAll().addClass('checked');
+                    $(this).parent().nextAll().removeClass('checked');
+                }
+
+            });
+            // Custome Jquery Step Button
+            $('.forward').click(function () {
+                $("#wizard").steps('next');
+            })
+            $('.backward').click(function () {
+                $("#wizard").steps('previous');
+            })
+        });
+
+
+
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+        .steps {
+            margin-bottom: 30px
+        }
+
+        .steps ul {
+            list-style-type: none;
+            display: flex;
+            position: relative;
+            padding: 0;
+        }
+
+        .steps ul li {
+            width: 33%;
+            margin-right: 10px;
+        }
+
+        .steps ul li a {
+            display: inline-block;
+            width: 100%;
+            height: 7px;
+            background: #e6e6e6;
+            border-radius: 3.5px
+        }
+
+        .steps ul li.first a,
+        .steps ul li.checked a {
+            background: #1AA4C2;
+            transition: all 0.5s ease
+        }
+
+        .steps ul:before {
+            font-size: 22px;
+            top: -38px;
+            position: absolute
+        }
+
+        .wizard > .steps .current-info,
+        .wizard > .steps .number {
+            display: none
+        }
+
+        .actions ul {
+            list-style-type: none;
+            display: flex;
+            margin-top: 30px;
+            justify-content: space-between;
+            margin-left: 0;
+            padding: 0;
+        }
+
+        .actions ul.step-last {
+            justify-content: flex-end
+        }
+
+        .actions ul.step-last li:first-child {
+            display: none
+        }
+
+        .actions li[aria-disabled="true"] a {
+            display: none
+        }
+
+
+        #organisation-wrapper {
+            display: none;
+        }
+
+        #register-card {
+            display: none;
+        }
+    </style>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends 'emails/mail_base.html.twig' %}
+{% block body %}
+    {% embed 'emails/blocks/1-col.twig' %}
+        {% block title %}{{ 'mail.acount-confirm.speech'|trans }} {{ account.lastname }}{% endblock %}
+        {% block body %}
+            <p>
+                <b>{{ 'mail.acount-verified.heading'|trans }} </b>
+            </p>
+            <p>
+            {{ 'mail.acount-verified.text'|trans }} </p>
+
+            <p>{{ 'mail.acount-verified.reminder'|trans }} </p>
+
+            <p>{{ 'mail.acount-verified.feedback'|trans }} <b>info@remedeymatch.io</b></p>
+
+            <p>{{ 'mail.acount-verified.sign-in.first'|trans }}  <b>{{ account.email }}</b> {{ 'mail.acount-verified.sign-in.second'|trans }}
+            </p>
+            {% include 'emails/blocks/button.twig' with {'title':"Anmelden", 'href':absolute_url('/app')} %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
