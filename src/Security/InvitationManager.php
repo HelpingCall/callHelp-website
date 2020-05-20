@@ -6,14 +6,13 @@ use App\Entity\Customer;
 use App\Entity\Invitation;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class InvitationManager
+class InvitationManager extends AbstractController
 {
     /**
      * @var MailerInterface
@@ -61,17 +60,15 @@ class InvitationManager
         $confirmLink = $this->router->generate('web_confirm', ['token' => $uniqueId],
             UrlGeneratorInterface::ABSOLUTE_URL);
         $name = $invitation->getFirstname().' '.$invitation->getLastname();
-        $email = (new TemplatedEmail())
-            ->from(new Address('no-reply@HelpingCall.de', 'HelpingCall.de'))
-            ->to(new Address($invitation->getEmail(), $name))
-            ->subject('Aktivieren Sie Ihren Zugang fürHelpingCall.de')
-            ->htmlTemplate('emails/account-confirm.html.twig')
-            ->context([
-                'lastname' => $invitation->getLastname(),
-                'confirmLink' => $confirmLink,
-            ]);
 
-        $this->mailer->send($email);
+        $header = "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html; charset=utf-8\r\n";
+        $header .= "From: no-reply@babyyodahook.xyz \r\n";
+
+        mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang fürHelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
+            'lastname' => $invitation->getLastname(),
+            'confirmLink' => $confirmLink,
+        ]), $header);
 
         $invitation->setToken($uniqueId);
         $this->entityManager->flush();
