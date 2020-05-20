@@ -55,7 +55,7 @@ class APIController extends AbstractController
 
         $helper = new Helper();
         foreach ($helpers as $helper) {
-            $mail = $helper->getEmail();
+            $email = $helper->getEmail();
             $name = $helper->getFirstname().' '.$helper->getLastname();
             mail($email, 'Ein Nutzer braucht Ihre Hilfe', $this->renderView('emails/helper/helper-mail.html.twig', [
                 'name' => $name,
