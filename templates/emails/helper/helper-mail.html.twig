@@ -1,0 +1,15 @@
+{% extends 'emails/mail_base.html.twig' %}
+{% block body %}
+    {% embed 'emails/blocks/1-col.twig' %}
+        {% block title %}{{ 'mail.acount-confirm.speech'|trans }} {{ name }} {{ 'mail.acount-confirm.activate-account'|trans }}{% endblock %}
+        {% block body %}
+            <p>{{ 'mail.acount-confirm.help.text'|trans }}</p>
+            {{place}}
+            <p>
+            </p>
+            <p>
+            </p>
+
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
