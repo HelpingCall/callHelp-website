@@ -15,6 +15,11 @@ profile_controllers:
     type: annotation
     name_prefix: profile_
 
+restAPI_controllers:
+    prefix: /rest
+    resource: ../../src/Controller/RestApi/
+    type: annotation
+    name_prefix: rest_
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
