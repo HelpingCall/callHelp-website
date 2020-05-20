@@ -17,7 +17,7 @@ profile_controllers:
 
 restAPI_controllers:
     prefix: /rest
-    resource: ../../src/Controller/RestAPI/
+    resource: ../../src/Controller/RestApi/
     type: annotation
     name_prefix: rest_
 kernel:
