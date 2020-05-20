@@ -46,7 +46,7 @@ final class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/pricing", name="pricing", methods={"GET"})
+     * @Route("/pricing", name="pricings", methods={"GET"})
      */
     public function pricing(Request $request): Response
     {

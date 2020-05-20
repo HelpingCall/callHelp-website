@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -35,9 +37,20 @@ class User implements UserInterface
     private $password;
 
     /**
+
+     * @ORM\OneToMany(targetEntity=Helper::class, mappedBy="userid")
+     */
+    private $helpers;
+
+    public function __construct()
+    {
+        $this->helpers = new ArrayCollection();
+    }
+
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
+
 
     public function getId(): ?int
     {
@@ -117,6 +130,35 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+
+    /**
+     * @return Collection|Helper[]
+     */
+    public function getHelpers(): Collection
+    {
+        return $this->helpers;
+    }
+
+    public function addHelper(Helper $helper): self
+    {
+        if (!$this->helpers->contains($helper)) {
+            $this->helpers[] = $helper;
+            $helper->setUserid($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHelper(Helper $helper): self
+    {
+        if ($this->helpers->contains($helper)) {
+            $this->helpers->removeElement($helper);
+            // set the owning side to null (unless already changed)
+            if ($helper->getUserid() === $this) {
+                $helper->setUserid(null);
+            }
+        }
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -125,6 +167,7 @@ class User implements UserInterface
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
 
         return $this;
     }

@@ -7,16 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class StartController extends AbstractController
+/**
+ * @Route("/personaldata", name="personaldata_")
+ *
+ * @IsGranted("ROLE_USER")
+ */
+class PersonaldataController extends AbstractController
 {
     /**
-     * @Route("/start", name="start", methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     * @Route("/show", name="show", methods={"GET"})
      */
-    public function start(): Response
+    public function show(): Response
     {
-
         return $this->render('profile/start.html.twig');
-
     }
 }
