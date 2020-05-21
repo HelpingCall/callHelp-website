@@ -27,3 +27,4 @@ symfony.lock
 symfony.lock
 symfony.lock
 composer.lock
+.env
