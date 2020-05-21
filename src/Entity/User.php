@@ -56,7 +56,7 @@ class User implements UserInterface
         $this->helpers = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?UuidInterface
     {
         return $this->id;
     }

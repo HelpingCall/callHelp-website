@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -12,11 +13,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Customer
 {
     /**
-     *  @var int|null
+     * @var UuidInterface|null
      *
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
 
@@ -88,12 +90,13 @@ class Customer
     private $telephonenumber;
 
     /**
-     * @var int|null
-     * @ORM\Column(type="integer")
+     * @var UuidInterface|null
+
+     * @ORM\Column(type="uuid", unique=true)
      */
     private $userID;
 
-    public function getId(): ?int
+    public function getId(): ?UuidInterface
     {
         return $this->id;
     }
@@ -194,12 +197,12 @@ class Customer
         return $this;
     }
 
-    public function getUserID(): ?int
+    public function getUserID(): ?UuidInterface
     {
         return $this->userID;
     }
 
-    public function setUserID(int $userID): self
+    public function setUserID(UuidInterface $userID): self
     {
         $this->userID = $userID;
 
