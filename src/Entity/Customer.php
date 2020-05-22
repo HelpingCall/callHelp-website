@@ -91,7 +91,6 @@ class Customer
 
     /**
      * @var UuidInterface|null
-
      * @ORM\Column(type="uuid", unique=true)
      */
     private $userID;

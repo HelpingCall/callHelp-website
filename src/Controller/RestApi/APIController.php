@@ -25,12 +25,14 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/api", name="api", methods={"GET"})
+     * @Route("/arm", name="arm", methods={"GET"})
      */
     public function api(Request $request): Response
     {
         $userId = $request->get('userID');
-
+        if (empty($userId)) {
+            return $this->render('api/fail.html.twig');
+        }
         $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
