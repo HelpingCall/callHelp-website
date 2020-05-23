@@ -51,9 +51,15 @@ class User implements UserInterface
      */
     private $jwt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Medicals::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $medicals;
+
     public function __construct()
     {
         $this->helpers = new ArrayCollection();
+        $this->medicals = new ArrayCollection();
     }
 
     public function getId(): ?UuidInterface
@@ -171,6 +177,37 @@ class User implements UserInterface
     public function setJwt(string $jwt): self
     {
         $this->jwt = $jwt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Medicals[]
+     */
+    public function getMedicals(): Collection
+    {
+        return $this->medicals;
+    }
+
+    public function addMedical(Medicals $medical): self
+    {
+        if (!$this->medicals->contains($medical)) {
+            $this->medicals[] = $medical;
+            $medical->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedical(Medicals $medical): self
+    {
+        if ($this->medicals->contains($medical)) {
+            $this->medicals->removeElement($medical);
+            // set the owning side to null (unless already changed)
+            if ($medical->getUser() === $this) {
+                $medical->setUser(null);
+            }
+        }
 
         return $this;
     }
