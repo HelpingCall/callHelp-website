@@ -1,0 +1,33 @@
+{% extends 'profile/profile-base.html.twig' %}
+{% block title %} {{ 'title.medical.helper.edit'|trans }} {% endblock %}
+{% block body %}
+    <main>
+        <section class="service-area services-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    <div class="form-group">
+                        {{ form_label(form.dosis) }}
+                        <div class="input-group">
+
+                            {{ form_widget(form.dosis) }}
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon1">x {{'profile.medical.daily'|trans}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ form_row(form.link) }}
+                    <button type="submit" class="btn btn-primary">{{'button.save' |trans}}</button>
+
+                    <a href="{{ path('profile_medical_list') }}" class="btn btn-secondary">{{'button.cancel'|trans}}</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        </section>
+    </main>
+
+{% endblock %}

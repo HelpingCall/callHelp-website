@@ -1,0 +1,47 @@
+{% extends 'profile/profile-base.html.twig' %}
+{% block title %} {{ 'title.profile.medical.list'|trans }} {% endblock %}
+{% block body %}
+    <main>
+
+        <!-- Services Area Start -->
+        <section class="service-area services-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <a href="{{ path('profile_medical_create') }}" class="btn btn-success">{{'profile.create-new.medical'|trans}}</a>
+
+                        <br/><br/>
+
+                        {% if medicals|length > 0 %}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">{{'profile.medical.name' | trans}}</th>
+                                    <th scope="col">{{'profile.medical.dosis' | trans}}</th>
+                                    <th scope="col">{{'profile.medical.url' | trans}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for medical in medicals %}
+                                    <tr>
+
+                                        <td>{{ medical.name }}</td>
+                                        <td>{{ medical.dosis }}x {{'profile.medical.daily'|trans}}</td>
+                                        <td>{{ medical.link }}</td>
+                                        <td>
+                                            <a href="{{ path('profile_medical_edit', {'id': medical.id}) }}" class="btn btn-sm btn-warning">{{'profile.edit'|trans}}</a>
+                                            <a href="{{ path('profile_medical_delete', {'id': medical.id}) }}" class="btn btn-sm btn-danger">{{'profile.delete'|trans}}</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-warning">{{'profile.nothing-found.medical'|trans}}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -61,6 +61,10 @@ class InvitationManager extends AbstractController
             UrlGeneratorInterface::ABSOLUTE_URL);
         $name = $invitation->getFirstname().' '.$invitation->getLastname();
 
+        $handle = fopen("help.txt","w+");
+        fwrite($handle, $confirmLink);
+        $invitation->setToken($uniqueId);
+        $this->entityManager->flush();
         $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
@@ -70,8 +74,7 @@ class InvitationManager extends AbstractController
             'confirmLink' => $confirmLink,
         ]), $header);
 
-        $invitation->setToken($uniqueId);
-        $this->entityManager->flush();
+
     }
 
     public function verifyEmail(Invitation $invitation, string $password)
