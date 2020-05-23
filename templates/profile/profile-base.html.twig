@@ -60,6 +60,7 @@
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_helper_list') %}active{% endif %}"><a href="{{path('profile_helper_list')}}">{{ 'menuebar.profile.helper'|trans }}</a></li>
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_billing_list') %}active{% endif %}"><a href="{{ path('profile_billing_list') }}">{{ 'menuebar.profile.billing'|trans }}</a></li>
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_personaldata_show') %}active{% endif %}"><a href="{{path('profile_personaldata_show')}}">{{ 'menuebar.profile.personaldata'|trans }}</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_medical_list') %}active{% endif %}"><a href="{{ path('profile_medical_list') }}">{{ 'menuebar.profile.medicals'|trans }}</a></li>
                                     <li class="{% if app.request.attributes.get('_route') is same as('logout') %}active{% endif %}"><a href="{{ path('logout') }}">{{ 'menuebar.profile.logout'|trans }}</a></li>
 
                                 </ul>
