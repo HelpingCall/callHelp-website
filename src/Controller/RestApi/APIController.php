@@ -66,7 +66,6 @@ class APIController extends AbstractController
         return $this->render('api/sucess.html.twig');
     }
 
-
     /**
      * @Route("/disarm", name="disarm", methods={"GET"})
      */
@@ -101,5 +100,4 @@ class APIController extends AbstractController
 
         return $this->render('api/sucess.html.twig');
     }
-
 }
