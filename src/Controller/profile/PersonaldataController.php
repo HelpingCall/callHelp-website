@@ -2,7 +2,9 @@
 
 namespace App\Controller\profile;
 
+use App\Entity\Customer;
 use App\Entity\User;
+use App\Forms\CustomerTypeAdress;
 use App\Forms\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -53,33 +55,37 @@ class PersonaldataController extends AbstractController
         }
 
         return $this->render('profile/personaldata/edit.html.twig', [
+            'type' => 'password',
             'form' => $form->createView(),
             'passwordUpdate' => $request->get('passwordUpdate'),
+            'addressUpdate' => $request->get('addressUpdate'),
         ]);
     }
 
     /**
      * @Route("/updateAdress", name="updateAdress", methods={"GET", "POST"})
      */
-    public function adress(UserInterface $user, Request $request): Response
+    public function updateadress(UserInterface $user, Request $request): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $customer = $this->getDoctrine()->getRepository(Customer::class)->findOneBy(['userID' => $user->getID()]);
+
+        $form = $this->createForm(CustomerTypeAdress::class, $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
-            $user->setPassword($encodedPassword);
-            $this->entityManager->persist($user);
+            $this->entityManager->persist($customer);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('profile_personaldata_updatePassword', [
-                'passwordUpdate' => '1',
+            return $this->redirectToRoute('profile_personaldata_updateAdress', [
+                'addressUpdate' => '1',
             ]);
         }
 
         return $this->render('profile/personaldata/edit.html.twig', [
+            'type' => 'address',
             'form' => $form->createView(),
             'passwordUpdate' => $request->get('passwordUpdate'),
+            'addressUpdate' => $request->get('addressUpdate'),
         ]);
     }
 }
