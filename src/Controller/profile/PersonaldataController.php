@@ -5,6 +5,7 @@ namespace App\Controller\profile;
 use App\Entity\Customer;
 use App\Entity\User;
 use App\Forms\CustomerTypeAdress;
+use App\Forms\CustomerTypeContact;
 use App\Forms\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -49,7 +50,7 @@ class PersonaldataController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('profile_personaldata_updatePassword', [
+            return $this->redirectToRoute('profile_personaldata_changePassword', [
                 'passwordUpdate' => '1',
             ]);
         }
@@ -59,6 +60,7 @@ class PersonaldataController extends AbstractController
             'form' => $form->createView(),
             'passwordUpdate' => $request->get('passwordUpdate'),
             'addressUpdate' => $request->get('addressUpdate'),
+            'contactUpdate' => $request->get('contactUpdate'),
         ]);
     }
 
@@ -86,6 +88,35 @@ class PersonaldataController extends AbstractController
             'form' => $form->createView(),
             'passwordUpdate' => $request->get('passwordUpdate'),
             'addressUpdate' => $request->get('addressUpdate'),
+            'contactUpdate' => $request->get('contactUpdate'),
+        ]);
+    }
+
+    /**
+     * @Route("/updateContact", name="updateContact", methods={"GET", "POST"})
+     */
+    public function updateContact(UserInterface $user, Request $request): Response
+    {
+        $customer = $this->getDoctrine()->getRepository(Customer::class)->findOneBy(['userID' => $user->getID()]);
+
+        $form = $this->createForm(CustomerTypeContact::class, $customer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($customer);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('profile_personaldata_updateContact', [
+                'contactUpdate' => '1',
+            ]);
+        }
+
+        return $this->render('profile/personaldata/edit.html.twig', [
+            'type' => 'contact',
+            'form' => $form->createView(),
+            'passwordUpdate' => $request->get('passwordUpdate'),
+            'addressUpdate' => $request->get('addressUpdate'),
+            'contactUpdate' => $request->get('contactUpdate'),
         ]);
     }
 }

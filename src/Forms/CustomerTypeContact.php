@@ -4,18 +4,20 @@ namespace App\Forms;
 
 use App\Entity\Customer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CustomerTypeAdress extends AbstractType
+class CustomerTypeContact extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('street')
-            ->add('housenumber')
-            ->add('zipcode')
-            ->add('city');
+            ->add('firstname')
+            ->add('lastname')
+            ->add('email', EmailType::class)
+            ->add('telephonenumber', TelType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
