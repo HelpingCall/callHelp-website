@@ -57,7 +57,7 @@
                             <nav>
                                 <ul id="navigation">
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_start') %}active{% endif %}"><a href="{{path('profile_start')}}"> {{ 'menuebar.profile.home'|trans }}</a></li>
-
+                                    <li class="{% if app.request.attributes.get('_route') is same as('profile_billing_list') %}active{% endif %}"><a href="{{ path('profile_billing_list') }}">{{ 'menuebar.profile.billing'|trans }}</a></li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{'profile.nav.dropdown.setup-personaldata'}}
@@ -75,7 +75,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" href="{{path('profile_helper_list')}}">{{ 'menuebar.profile.helper'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('profile_medical_list') }}">{{ 'menuebar.profile.medials'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('profile_medical_list') }}">{{ 'menuebar.profile.medicals'|trans }}</a>
                                         </div>
                                     </li>
                                     <li class="{% if app.request.attributes.get('_route') is same as('logout') %}active{% endif %}"><a href="{{ path('logout') }}">{{ 'menuebar.profile.logout'|trans }}</a></li>
