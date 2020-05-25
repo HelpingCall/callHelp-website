@@ -4,6 +4,7 @@ namespace App\Forms;
 
 use App\Entity\Helper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ final class HelperType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
-            ->add('email');
+            ->add('email', EmailType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
