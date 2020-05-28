@@ -18,13 +18,14 @@ class UserType extends AbstractType
 
             ->add('email', EmailType::class, [
                 'disabled' => true,
+                'label_format' => 'user.edit.%name%',
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
-                'first_options' => ['label' => 'New password'],
-                'second_options' => ['label' => 'Confirm new password'],
-                'invalid_message' => 'The password fields must match.',
+                'first_options' => ['label_format' => 'user.edit.plainPassword.%name%'],
+                'second_options' => ['label_format' => 'user.edit.plainPassword.%name%'],
+                'invalid_message' => 'user.edit.%name%',
             ])
         ;
     }
