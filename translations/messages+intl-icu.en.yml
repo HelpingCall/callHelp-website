@@ -1,3 +1,4 @@
+
 companyname: __companyname
 menuebar.home: __menuebar.home
 menuebar.feature: __menuebar.feature
@@ -110,3 +111,231 @@ button.end-register: __button.end-register
 register.password-strength-error: __register.password-strength-error
 register.password-confirm-error: __register.password-confirm-error
 register.password-length-error: __register.password-length-error
+
+start.text-first: ""
+start.heading-first: ""
+companyname: ""
+start.text-second: ""
+button.download: ""
+service.how-to-help: ""
+service.heading.1: ""
+service.heading.1.description: ""
+service.heading.2: ""
+service.heading.2.description: ""
+service.heading.3: ""
+service.heading.3.description: ""
+index.apps.heading.companyname-apps: ""
+index.apps.heading.screenshot: ""
+index.apps.description: ""
+available-apps.heading: ""
+available-apps.first-text: ""
+best-feature.heading: ""
+best-feature.sub-heading1: ""
+best-feature.sub-heading1.description: ""
+best-feature.sub-heading2: ""
+best-feature.sub-heading2.description: ""
+best-feature.sub-heading3: ""
+best-feature.sub-heading3.description: ""
+best-feature.sub-heading4: ""
+best-feature.sub-heading4.description: ""
+pricing.heading: ""
+button.get-started: ""
+menuebar.home: ""
+menuebar.feature: ""
+menuebar.services: ""
+menuebar.pricing: ""
+menuebar.contact: ""
+footer.info: ""
+footer.quicklinks.heading: ""
+footer.quicklinks.link.1: ""
+footer.quicklinks.link.2: ""
+footer.quicklinks.link.3: ""
+footer.quicklinks.link.4: ""
+footer.quicklinks.link.5: ""
+footer.support.heading: ""
+footer.support.link.1: ""
+footer.support.link.2: ""
+footer.support.link.3: ""
+footer.support.link.4: ""
+footer.support.link.5: ""
+footer.newsletter.heading: ""
+footer.newsletter.decription: ""
+forms.mail: ""
+This value should be false.: ''
+This value should be true.: ''
+"This value should be of type {{ type }}.": ''
+This value should be blank.: ''
+The value you selected is not a valid choice.: ''
+"You must select at least {{ limit }} choice.|You must select at least {{ limit }} choices.": ''
+"You must select at most {{ limit }} choice.|You must select at most {{ limit }} choices.": ''
+One or more of the given values is invalid.: ''
+This field was not expected.: ''
+This field is missing.: ''
+This value is not a valid date.: ''
+This value is not a valid datetime.: ''
+This value is not a valid email address.: ''
+The file could not be found.: ''
+The file is not readable.: ''
+"The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.": ''
+"The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}.": ''
+"This value should be {{ limit }} or less.": ''
+"This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.": ''
+"This value should be {{ limit }} or more.": ''
+"This value is too short. It should have {{ limit }} character or more.|This value is too short. It should have {{ limit }} characters or more.": ''
+This value should not be blank.: ''
+This value should not be null.: ''
+This value should be null.: ''
+This value is not valid.: ''
+This value is not a valid time.: ''
+This value is not a valid URL.: ''
+The two values should be equal.: ''
+"The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}.": ''
+The file is too large.: ''
+The file could not be uploaded.: ''
+This value should be a valid number.: ''
+This file is not a valid image.: ''
+This is not a valid IP address.: ''
+This value is not a valid language.: ''
+This value is not a valid locale.: ''
+This value is not a valid country.: ''
+This value is already used.: ''
+The size of the image could not be detected.: ''
+"The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.": ''
+"The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px.": ''
+"The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.": ''
+"The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.": ''
+"This value should be the user''s current password.": ''
+"This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.": ''
+The file was only partially uploaded.: ''
+No file was uploaded.: ''
+No temporary folder was configured in php.ini.: ''
+Cannot write temporary file to disk.: ''
+A PHP extension caused the upload to fail.: ''
+"This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.": ''
+"This collection should contain {{ limit }} element or less.|This collection should contain {{ limit }} elements or less.": ''
+"This collection should contain exactly {{ limit }} element.|This collection should contain exactly {{ limit }} elements.": ''
+Invalid card number.: ''
+Unsupported card type or invalid card number.: ''
+This is not a valid International Bank Account Number (IBAN).: ''
+This value is not a valid ISBN-10.: ''
+This value is not a valid ISBN-13.: ''
+This value is neither a valid ISBN-10 nor a valid ISBN-13.: ''
+This value is not a valid ISSN.: ''
+This value is not a valid currency.: ''
+"This value should be equal to {{ compared_value }}.": ''
+"This value should be greater than {{ compared_value }}.": ''
+"This value should be greater than or equal to {{ compared_value }}.": ''
+"This value should be identical to {{ compared_value_type }} {{ compared_value }}.": ''
+"This value should be less than {{ compared_value }}.": ''
+"This value should be less than or equal to {{ compared_value }}.": ''
+"This value should not be equal to {{ compared_value }}.": ''
+"This value should not be identical to {{ compared_value_type }} {{ compared_value }}.": ''
+"The image ratio is too big ({{ ratio }}). Allowed maximum ratio is {{ max_ratio }}.": ''
+"The image ratio is too small ({{ ratio }}). Minimum ratio expected is {{ min_ratio }}.": ''
+"The image is square ({{ width }}x{{ height }}px). Square images are not allowed.": ''
+"The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.": ''
+"The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.": ''
+An empty file is not allowed.: ''
+The host could not be resolved.: ''
+"This value does not match the expected {{ charset }} charset.": ''
+This is not a valid Business Identifier Code (BIC).: ''
+Error: ""
+This is not a valid UUID.: ''
+"This value should be a multiple of {{ compared_value }}.": ''
+"This Business Identifier Code (BIC) is not associated with IBAN {{ iban }}.": ''
+This value should be valid JSON.: ''
+This collection should contain only unique elements.: ''
+This value should be positive.: ''
+This value should be either positive or zero.: ''
+This value should be negative.: ''
+This value should be either negative or zero.: ''
+This value is not a valid timezone.: ''
+"This password has been leaked in a data breach, it must not be used. Please use another password.": ''
+"This value should be between {{ min }} and {{ max }}.": ''
+This value is not a valid hostname.: ''
+"The number of elements in this collection should be a multiple of {{ compared_value }}.": ''
+"This value should satisfy at least one of the following constraints:": ''
+Each element of this collection should satisfy its own set of constraints.: ''
+This form should not contain extra fields.: ''
+The uploaded file was too large. Please try to upload a smaller file.: ''
+The CSRF token is invalid. Please try to resubmit the form.: ''
+An authentication exception occurred.: ''
+Authentication credentials could not be found.: ''
+Authentication request could not be processed due to a system problem.: ''
+Invalid credentials.: ''
+Cookie has already been used by someone else.: ''
+Not privileged to request the resource.: ''
+Invalid CSRF token.: ''
+No authentication provider found to support the authentication token.: ''
+"No session available, it either timed out or cookies are not enabled.": ''
+No token could be found.: ''
+Username could not be found.: ''
+Account has expired.: ''
+Credentials have expired.: ''
+Account is disabled.: ''
+Account is locked.: ''
+menuebar.login: Login
+mail.acount-confirm.speech: Welcome at CallForHelp
+mail.acount-confirm.activate-account: Activate Account
+mail.acount-confirm.activate-account.text: Please activate your account by clicking this button
+mail.acount-confirm.activate-account.no-button: If you can not see the button, please use this link to activate your account
+mail.acount-help.help.text: ""
+mail.acount-confirm.activate-account.footer: ""
+title.profile.helper.edit: ""
+title.profile.helper.list: ""
+profile.create-new: ""
+profile.helper.firstname: ""
+profile.helper.lastname: ""
+profile.helper.mail: ""
+profile.edit: ""
+profile.delete: ""
+profile.nothing-found: ""
+menuebar.profile.home: ""
+menuebar.profile.helper: ""
+menuebar.profile.billing: ""
+menuebar.profile.personaldata: ""
+menuebar.profile.logout: ""
+title.profile.helper.start: ""
+sign-in.title: ""
+sign-in.already-loged-in: You are already loged in
+sing-in.logout: ""
+sign-in.heading: Login
+sign-in.email: Username or email address
+sign-in.password: Password
+button.sign-in: login
+index.title: ""
+register.confirmation.text: Registration completed
+register.confirmation.button: Return to Home
+register.error-message: ""
+register.retry: ""
+register.disclaimer-heading: ""
+register.disclaimer: ""
+register.button.start: ""
+register.personal-data-heading: Personal data
+register.firstname: First Name
+register.lastname: Last Name
+register.email: Email
+register.contact-information-heading: ""
+register.street: Street
+register.housenumber: Streetnumber
+register.postal-code: Postal / Zip-Code
+register.postal-code-short: Postal-Code
+register.city: City
+register.telephone-number: Phone Number
+register.telephone-number-placeholder: Phone Number
+register.telephone-number-error: Your entered number is incorrect
+register.postal-code-error: Postal Code not found
+register.empty-error: This field can not be empty
+register.email-error: Email not found
+register.button.finish: Submit
+register.button.next: Next
+register.button.previous: Previous
+register.password-heading: Password
+register.password: Password
+register.password-confirm: Confirm Password
+register.dataprotection: ""
+button.end-register: ""
+register.password-strength-error: Your password is not strong enough
+register.password-confirm-error: ""
+register.password-length-error: Your password is not long enough
+
