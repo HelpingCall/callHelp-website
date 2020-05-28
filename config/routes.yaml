@@ -3,23 +3,29 @@
 #    controller: App\Controller\DefaultController::index
 
 login:
-  path: /login
+  path: '/{_locale}/login'
   controller: App\Controller\SecurityController::login
   defaults:
     route: 'login'
+  requirements:
+    _locale: '%app.locales%'
 
 logout:
-  path: /logout
+  path: '/{_locale}/logout'
   controller: App\Controller\SecurityController::logout
   defaults:
     route: 'logout'
+  requirements:
+    _locale: '%app.locales%'
 
 index:
   path: /
   controller: App\Controller\web\IndexController
 
 select:
-  path: /select
+  path: '/{_locale}/select'
   controller: App\Controller\SecurityController::start
   defaults:
     route: 'select'
+  requirements:
+    _locale: '%app.locales%'
