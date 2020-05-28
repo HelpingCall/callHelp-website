@@ -1,0 +1,265 @@
+start.text-first: 'App Landingpage'
+start.heading-first: 'Safety through'
+companyname: HelpingCall
+start.text-second: 'Our application is supporting you to find your loved ones in emergency situations'
+button.download: Download
+service.how-to-help: 'How it works'
+service.heading.1: People finder
+service.heading.1.description: 'With the help of our built-in GPS you can locate the person easily'
+service.heading.2: 'Built-in SIM card'
+service.heading.2.description: 'Our product features a built-in prepaid SIM card to start emergency calls'
+service.heading.3: 'Easy handling'
+service.heading.3.description: 'Our product is kept plain and simple, by pressing one single button you can trigger the alarm or deactivate it.'
+index.apps.heading.companyname-apps: ''
+index.apps.heading.screenshot: 'Pictures of our product and application'
+index.apps.description: 'Here you can see pictures of our product and application.'
+available-apps.heading: 'Supported on the following platforms '
+available-apps.first-text: 'Our product can be used on the following platforms. The set up can be done online '
+best-feature.heading: 'Our main features '
+best-feature.sub-heading1: ''
+best-feature.sub-heading1.description: ''
+best-feature.sub-heading2: ''
+best-feature.sub-heading2.description: ''
+best-feature.sub-heading3: ''
+best-feature.sub-heading3.description: ''
+best-feature.sub-heading4: ''
+best-feature.sub-heading4.description: ''
+pricing.heading: Prices
+button.get-started: 'Let''s get started'
+menuebar.home: Home
+menuebar.feature: Feature
+menuebar.services: Service
+menuebar.pricing: Prices
+menuebar.contact: Contact
+footer.info: HelpingCall
+footer.quicklinks.heading: Quick links
+footer.quicklinks.link.1: ''
+footer.quicklinks.link.2: ''
+footer.quicklinks.link.3: ''
+footer.quicklinks.link.4: ''
+footer.quicklinks.link.5: ''
+footer.support.heading: ''
+footer.support.link.1: ''
+footer.support.link.2: ''
+footer.support.link.3: ''
+footer.support.link.4: ''
+footer.support.link.5: ''
+footer.newsletter.heading: 'Newsletter'
+footer.newsletter.decription: 'Sign up for our newsletter'
+forms.mail: Email
+This value should be false.: 'This value should be false.'
+This value should be true.: 'This value should be true.'
+"This value should be of type {{ type }}.": 'This value should be of type {{ type }}.'
+This value should be blank.: 'This value should be blank.'
+The value you selected is not a valid choice.: 'The value you selected is not a valid choice.'
+"You must select at least {{ limit }} choice.|You must select at least {{ limit }} choices.": 'You must select at least {{ limit }} choice.|You must select at least {{ limit }} choices.'
+"You must select at most {{ limit }} choice.|You must select at most {{ limit }} choices.": 'You must select at most {{ limit }} choice.|You must select at most {{ limit }} choices.'
+One or more of the given values is invalid.: 'One or more of the given values is invalid.'
+This field was not expected.: 'This field was not expected.'
+This field is missing.: 'This field is missing.'
+This value is not a valid date.: 'This value is not a valid date.'
+This value is not a valid datetime.: 'This value is not a valid datetime.'
+This value is not a valid email address.: 'This value is not a valid email address.'
+The file could not be found.: 'The file could not be found.'
+The file is not readable.: 'The file is not readable.'
+"The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.": 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.'
+"The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}.": 'The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}.'
+"This value should be {{ limit }} or less.": 'This value should be {{ limit }} or less.'
+"This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.": 'This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.'
+"This value should be {{ limit }} or more.": 'This value should be {{ limit }} or more.'
+"This value is too short. It should have {{ limit }} character or more.|This value is too short. It should have {{ limit }} characters or more.": 'This value is too short. It should have {{ limit }} character or more.|This value is too short. It should have {{ limit }} characters or more.'
+This value should not be blank.: 'This value should not be blank.'
+This value should not be null.: 'This value should not be null.'
+This value should be null.: 'This value should be zero.'
+This value is not valid.: 'This value is not valid.'
+This value is not a valid time.: 'This value is not a valid time.'
+This value is not a valid URL.: 'This value is not a valid URL.'
+The two values should be equal.: 'The two values should be equal.'
+"The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}.": 'The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}.'
+The file is too large.: 'The file is too large.'
+The file could not be uploaded.: 'The file could not be uploaded.'
+This value should be a valid number.: 'This value should be a valid number.'
+This file is not a valid image.: 'This file is not a valid image.'
+This is not a valid IP address.: 'This is not a valid IP address.'
+This value is not a valid language.: 'This value is not a valid language.'
+This value is not a valid locale.: 'This value is not a valid locale.'
+This value is not a valid country.: 'This value is not a valid country.'
+This value is already used.: 'This value is already used.'
+The size of the image could not be detected.: 'The size of the image could not be detected.'
+"The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.": 'The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.'
+"The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px.": 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px.'
+"The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.": 'The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.'
+"The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.": 'The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.'
+"This value should be the user''s current password.": 'This value should be the user''''s current password.'
+"This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.": 'This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.'
+The file was only partially uploaded.: 'The file was only partially uploaded.'
+No file was uploaded.: 'No file was uploaded.'
+No temporary folder was configured in php.ini.: 'No temporary folder was configured in php.ini.'
+Cannot write temporary file to disk.: 'Cannot write temporary file to disk.'
+A PHP extension caused the upload to fail.: 'A PHP extension caused the upload to fail.'
+"This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.": 'This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.'
+"This collection should contain {{ limit }} element or less.|This collection should contain {{ limit }} elements or less.": 'This collection should contain {{ limit }} element or less.|This collection should contain {{ limit }} elements or less.'
+"This collection should contain exactly {{ limit }} element.|This collection should contain exactly {{ limit }} elements.": 'This collection should contain exactly {{ limit }} element.|This collection should contain exactly {{ limit }} elements.'
+Invalid card number.: 'Invalid card number.'
+Unsupported card type or invalid card number.: 'Unsupported card type or invalid card number.'
+This is not a valid International Bank Account Number (IBAN).: 'This is not a valid International Bank Account Number (IBAN).'
+This value is not a valid ISBN-10.: 'This value is not a valid ISBN-10.'
+This value is not a valid ISBN-13.: 'This value is not a valid ISBN-13.'
+This value is neither a valid ISBN-10 nor a valid ISBN-13.: 'This value is neither a valid ISBN-10 nor a valid ISBN-13.'
+This value is not a valid ISSN.: 'This value is not a valid ISSN.'
+This value is not a valid currency.: 'This value is not a valid currency.'
+"This value should be equal to {{ compared_value }}.": 'This value should be equal to {{ compared_value }}.'
+"This value should be greater than {{ compared_value }}.": 'This value should be greater than {{ compared_value }}.'
+"This value should be greater than or equal to {{ compared_value }}.": 'This value should be greater than or equal to {{ compared_value }}.'
+"This value should be identical to {{ compared_value_type }} {{ compared_value }}.": 'This value should be identical to {{ compared_value_type }} {{ compared_value }}.'
+"This value should be less than {{ compared_value }}.": 'This value should be less than {{ compared_value }}.'
+"This value should be less than or equal to {{ compared_value }}.": 'This value should be less than or equal to {{ compared_value }}.'
+"This value should not be equal to {{ compared_value }}.": 'This value should not be equal to {{ compared_value }}.'
+"This value should not be identical to {{ compared_value_type }} {{ compared_value }}.": 'This value should not be identical to {{ compared_value_type }} {{ compared_value }}.'
+"The image ratio is too big ({{ ratio }}). Allowed maximum ratio is {{ max_ratio }}.": 'The image ratio is too big ({{ ratio }}). Allowed maximum ratio is {{ max_ratio }}.'
+"The image ratio is too small ({{ ratio }}). Minimum ratio expected is {{ min_ratio }}.": 'The image ratio is too small ({{ ratio }}). Minimum ratio expected is {{ min_ratio }}.'
+"The image is square ({{ width }}x{{ height }}px). Square images are not allowed.": 'The image is square ({{ width }}x{{ height }}px). Square images are not allowed.'
+"The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.": 'The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.'
+"The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.": 'The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.'
+An empty file is not allowed.: 'An empty file is not allowed.'
+The host could not be resolved.: 'The host could not be resolved.'
+"This value does not match the expected {{ charset }} charset.": 'This value does not match the expected {{ charset }} charset.'
+This is not a valid Business Identifier Code (BIC).: 'This is not a valid Business Identifier Code (BIC).'
+Error: Error
+This is not a valid UUID.: 'This is not a valid UUID.'
+"This value should be a multiple of {{ compared_value }}.": 'This value should be a multiple of {{ compared_value }}.'
+"This Business Identifier Code (BIC) is not associated with IBAN {{ iban }}.": 'This Business Identifier Code (BIC) is not associated with IBAN {{ iban }}.'
+This value should be valid JSON.: 'This value should be valid JSON.'
+This collection should contain only unique elements.: 'This collection should contain only unique elements.'
+This value should be positive.: 'This value should be positive.'
+This value should be either positive or zero.: 'This value should be either positive or zero.'
+This value should be negative.: 'This value should be negative.'
+This value should be either negative or zero.: 'This value should be either negative or zero.'
+This value is not a valid timezone.: 'This value is not a valid timezone.'
+"This password has been leaked in a data breach, it must not be used. Please use another password.": 'This password has been leaked in a data breach, it must not be used. Please use another password.'
+"This value should be between {{ min }} and {{ max }}.": 'This value should be between {{ min }} and {{ max }}.'
+This value is not a valid hostname.: 'This value is not a valid hostname.'
+"The number of elements in this collection should be a multiple of {{ compared_value }}.": 'The number of elements in this collection should be a multiple of {{ compared_value }}.'
+"This value should satisfy at least one of the following constraints:": 'This value should satisfy at least one of the following constraints:'
+Each element of this collection should satisfy its own set of constraints.: 'Each element of this collection should satisfy its own set of constraints.'
+This form should not contain extra fields.: 'This form should not contain extra fields.'
+The uploaded file was too large. Please try to upload a smaller file.: 'The uploaded file was too large. Please try to upload a smaller file.'
+The CSRF token is invalid. Please try to resubmit the form.: 'The CSRF token is invalid. Please try to resubmit the form.'
+An authentication exception occurred.: 'An authentication exception occurred.'
+Authentication credentials could not be found.: 'Authentication credentials could not be found.'
+Authentication request could not be processed due to a system problem.: 'Authentication request could not be processed due to a system problem.'
+Invalid credentials.: 'Invalid credentials.'
+Cookie has already been used by someone else.: 'Cookie has already been used by someone else.'
+Not privileged to request the resource.: 'Not privileged to request the resource.'
+Invalid CSRF token.: 'Invalid CSRF token.'
+No authentication provider found to support the authentication token.: 'No authentication provider found to support the authentication token.'
+"No session available, it either timed out or cookies are not enabled.": 'No session available, it either timed out or cookies are not enabled.'
+No token could be found.: 'No token could be found.'
+Username could not be found.: 'Username could not be found.'
+Account has expired.: 'Account has expired.'
+Credentials have expired.: 'Credentials have expired.'
+Account is disabled.: 'Account is disabled.'
+Account is locked.: 'Account is locked.'
+menuebar.login: Login
+mail.acount-confirm.speech: 'Welcome at CallForHelp'
+mail.acount-confirm.activate-account: 'Activate Account'
+mail.acount-confirm.activate-account.text: 'Please activate your account by clicking this button'
+mail.acount-confirm.activate-account.no-button: 'If you can not see the button, please use this link to activate your account'
+mail.acount-help.help.text: ''
+mail.acount-confirm.activate-account.footer: ''
+title.profile.helper.edit: 'Edit Helper'
+title.profile.helper.list: 'Helperlist'
+profile.create-new: 'Create New'
+profile.helper.firstname: First name
+profile.helper.lastname: Last name
+profile.helper.mail: Email
+profile.edit: Edit
+profile.delete: Delete
+profile.nothing-found: 'No Helpers were found'
+menuebar.profile.home: Home
+menuebar.profile.helper: 'Manage Helper'
+menuebar.profile.billing: Billing Information
+menuebar.profile.personaldata: 'Personal Data'
+menuebar.profile.logout: Sign Out
+title.profile.helper.start: 'HelpingCall Helper'
+sign-in.title: 'Sign in'
+sign-in.already-loged-in: 'You are already loged in'
+sing-in.logout: Log out
+sign-in.heading: 'Login'
+sign-in.email: Username or email address
+sign-in.password: Password
+button.sign-in: login
+index.title: 'Call For Help'
+register.confirmation.text: 'Registration completed'
+register.confirmation.button: 'Return to Home'
+register.error-message: 'The following errors occurred during the registration:'
+register.retry: 'Please try that again'
+register.disclaimer-heading: Note
+register.disclaimer: 'Your data is being processed and saved according to the requirements of the DSGVO'
+register.button.start: 'Start the registration'
+register.personal-data-heading: 'Personal data'
+register.firstname: First Name
+register.lastname: Last Name
+register.email: Email
+register.contact-information-heading: Contact details
+register.street: Street
+register.housenumber: Streetnumber
+register.postal-code: Postal / Zip-Code
+register.postal-code-short: Postal-Code
+register.city: City
+register.telephone-number: Phone Number
+register.telephone-number-placeholder: 'Phone Number'
+register.telephone-number-error: 'Your entered number is incorrect'
+register.postal-code-error: 'Postal Code not found'
+register.empty-error: 'This field can not be empty'
+register.email-error: 'Email not found'
+register.button.finish: Submit
+register.button.next: Next
+register.button.previous: Previous
+register.password-heading: 'Password'
+register.password: Password
+register.password-confirm: 'Confirm Password'
+register.dataprotection: 'By registering you confirm our privacy policy and accept our terms and conditions.'
+button.end-register: 'Complete registration '
+register.password-strength-error: 'Your password is not strong enough'
+register.password-confirm-error: 'Passwords don''t match'
+register.password-length-error: 'Your password is not long enough'
+"This value should be the user''''s current password.": 'This Value should be equal to the password.'
+button.save: Save
+button.cancel: Cancel
+title.medical.helper.edit: 'Helping Call- Edit medication '
+profile.medical.daily: daily
+title.profile.medical.list: 'Manage medication'
+profile.create-new.medical: 'New medication '
+profile.medical.name: Medication name
+profile.medical.dosis: Dosis
+profile.medical.url: 'Link to the yellow list'
+profile.nothing-found.medical: 'No medication has been created yet'
+title.profile.personaldata.edit: 'Helping Call- Manage personal data '
+password.update.success: 'Your password has been updated.'
+address.update.success: 'Your address has been updated.'
+contact.update.success: 'Your contact data has been updated.'
+menuebar.profile.updatePasswordandEmail: 'Change password'
+menuebar.profile.updateAdress: 'Change address'
+menuebar.profile.updateContact: 'Change contact data'
+menuebar.profile.medicals: 'Manage medication'
+profile.nav.dropdown.setup-personaldata: 'Personal data'
+profile.nav.dropdown.setup: Setup
+medical.edit.link: ''
+medical.edit.dosis: ""
+medical.edit.name: ""
+helper.edit.firstname: ""
+helper.edit.lastname: ""
+helper.edit.email: ""
+customer.contact.edit.telephonenumber: ""
+customer.contact.edit.email: ""
+customer.contact.edit.firstname: ""
+customer.contact.edit.lastname: ""
+customer.adress.edit.street: ''
+customer.adress.edit.housenumber: ''
+customer.adress.edit.zipcode: ''
+customer.adress.edit.city: ''
+user.edit.email: ""
+user.edit.plainPassword.first: ""
+user.edit.plainPassword.second: ""
+user.edit.plainPassword: ""
