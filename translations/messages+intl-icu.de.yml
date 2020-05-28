@@ -243,7 +243,22 @@ menuebar.profile.updateAdress: 'Adresse ändern'
 menuebar.profile.updateContact: 'Kontaktdaten ändern'
 menuebar.profile.medicals: 'Medikamtente verwalten'
 profile.nav.dropdown.setup-personaldata: 'Persönliche Daten'
-profile.nav.dropdown.setup: 'Einrichten'
-link:
-dosis:
-name:
+profile.nav.dropdown.setup: Einrichten
+medical.edit.link: 'Link zur Gelben Liste'
+medical.edit.dosis: Dosis
+medical.edit.name: Medikamentenname
+helper.edit.firstname: Vorname
+helper.edit.lastname: Nachname
+helper.edit.email: Email
+customer.contact.edit.telephonenumber: Telefonnummer
+customer.contact.edit.email: EMail
+customer.contact.edit.firstname: Vorname
+customer.contact.edit.lastname: Nachname
+customer.adress.edit.street: 'Straße'
+customer.adress.edit.housenumber: 'Hausnumber'
+customer.adress.edit.zipcode: 'Postleitzahl'
+customer.adress.edit.city: 'Stadt'
+user.edit.email: EMail
+user.edit.plainPassword.first: Neues Passwort
+user.edit.plainPassword.second: Passwort wiederholen
+user.edit.plainPassword: Das Passwort ist nicht gültig
