@@ -224,3 +224,23 @@ button.end-register: 'Registrierung abschließen'
 register.password-strength-error: 'Ihr Passwort muss mindestens einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.'
 register.password-confirm-error: 'Die Passwörter stimmen nicht überein.'
 register.password-length-error: 'Das Passwort muss mindestens 6 Zeichen lang sein.'
+button.save: Speichern
+button.cancel: Abbrechen
+title.medical.helper.edit: 'Helping Call- Medikamente bearbeiten'
+profile.medical.daily: täglich
+title.profile.medical.list: 'Helping Call- Medikamente verwalten'
+profile.create-new.medical: 'Neues Medikament'
+profile.medical.name: Medikamentenname
+profile.medical.dosis: Dosis
+profile.medical.url: 'Link zur gelben Liste'
+profile.nothing-found.medical: 'Es sind noch keine Medikamente angelegt'
+title.profile.personaldata.edit: 'Helping Call- Persönliche Daten verwalten'
+password.update.success: 'Ihr Passwort wurde erfolgreich geändert.'
+address.update.success: 'Ihre Adresse wurde erfolgreich geändert.'
+contact.update.success: 'Ihre Kontaktdaten wurde erfolgreich geändert.'
+menuebar.profile.updatePasswordandEmail: 'Passwort ändern'
+menuebar.profile.updateAdress: 'Adresse ändern'
+menuebar.profile.updateContact: 'Kontaktdaten ändern'
+menuebar.profile.medicals: 'Medikamtente verwalten'
+profile.nav.dropdown.setup-personaldata: 'Persönliche Daten'
+profile.nav.dropdown.setup: 'Einrichten'

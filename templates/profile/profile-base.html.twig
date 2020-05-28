@@ -60,7 +60,7 @@
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_billing_list') %}active{% endif %}"><a href="{{ path('profile_billing_list') }}">{{ 'menuebar.profile.billing'|trans }}</a></li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{'profile.nav.dropdown.setup-personaldata'}}
+                                            {{'profile.nav.dropdown.setup-personaldata'| trans}}
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" href="{{path('profile_personaldata_changePassword')}}">{{ 'menuebar.profile.updatePasswordandEmail'|trans }}</a>
@@ -72,7 +72,7 @@
 
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{'profile.nav.dropdown.setup'}}
+                                            {{'profile.nav.dropdown.setup'|trans}}
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" href="{{path('profile_helper_list')}}">{{ 'menuebar.profile.helper'|trans }}</a>
