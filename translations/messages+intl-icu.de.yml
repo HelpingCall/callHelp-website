@@ -244,3 +244,6 @@ menuebar.profile.updateContact: 'Kontaktdaten ändern'
 menuebar.profile.medicals: 'Medikamtente verwalten'
 profile.nav.dropdown.setup-personaldata: 'Persönliche Daten'
 profile.nav.dropdown.setup: 'Einrichten'
+link:
+dosis:
+name:
