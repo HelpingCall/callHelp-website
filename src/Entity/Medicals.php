@@ -33,7 +33,7 @@ class Medicals
     private $link;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="medicals")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="medicals")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
