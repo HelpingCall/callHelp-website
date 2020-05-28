@@ -27,7 +27,7 @@ class APIController extends AbstractController
     /**
      * @Route("/arm", name="arm", methods={"GET"})
      */
-    public function api(Request $request): Response
+    public function arm(Request $request): Response
     {
         $userId = $request->get('userID');
         if (empty($userId)) {
@@ -60,6 +60,41 @@ class APIController extends AbstractController
             mail($email, 'Ein Nutzer braucht Ihre Hilfe', $this->renderView('emails/helper/helper-mail.html.twig', [
                 'name' => $name,
                 'place' => $result,
+            ]), $header);
+        }
+
+        return $this->render('api/sucess.html.twig');
+    }
+
+    /**
+     * @Route("/disarm", name="disarm", methods={"GET"})
+     */
+    public function disarm(Request $request): Response
+    {
+        $userId = $request->get('userID');
+        if (empty($userId)) {
+            return $this->render('api/fail.html.twig');
+        }
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($userId);
+        if (!$user) {
+            return $this->render('api/fail.html.twig');
+        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
+            return $this->render('api/fail.html.twig');
+        }
+        $helpers = $user->getHelpers();
+
+        $header = "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html; charset=utf-8\r\n";
+        $header .= "From: no-reply@babyyodahook.xyz \r\n";
+
+        $helper = new Helper();
+        foreach ($helpers as $helper) {
+            $email = $helper->getEmail();
+            $name = $helper->getFirstname().' '.$helper->getLastname();
+            mail($email, 'Ein Nutzer benötigt nicht mehr Ihre Hilfe', $this->renderView('emails/helper/helper-mail-disarm.html.twig', [
+                'name' => $name,
             ]), $header);
         }
 
