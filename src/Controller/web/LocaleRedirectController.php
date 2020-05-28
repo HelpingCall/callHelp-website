@@ -43,9 +43,6 @@ class LocaleRedirectController extends AbstractController
             $locale = $this->availableLocales[0];
         }
 
-        $handle=fopen("test.txt","w+");
-        fwrite($handle,$route);
-
         return $this->redirectToRoute($route, [
             '_locale' => $locale ?? $this->defaultLocale,
         ]);
