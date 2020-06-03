@@ -106,13 +106,19 @@ class APIController extends AbstractController
      */
     public function RegisterDevice(Request $request): Response
     {
+        
         $userId = $request->get('userID');
         if (empty($userId)) {
             return $this->render('api/fail.html.twig');
         }
-        $user = $this->getDoctrine()
+        try {
+             $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
+        } catch (Exception $e) {
+             return $this->render('api/fail.html.twig');
+        }
+       
         if (!$user) {
             return $this->render('api/fail.html.twig');
         } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
