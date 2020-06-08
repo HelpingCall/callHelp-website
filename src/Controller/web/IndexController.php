@@ -38,6 +38,14 @@ final class IndexController extends AbstractController
     }
 
     /**
+     * @Route("/imprint", name="imprint", methods={"GET"})
+     */
+    public function imprint(Request $request): Response
+    {
+        return $this->render('web/static/imprint.html.twig');
+    }
+
+    /**
      * @Route("/feature", name="feature", methods={"GET"})
      */
     public function feature(Request $request): Response
