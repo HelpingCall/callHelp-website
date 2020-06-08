@@ -100,31 +100,30 @@ class APIController extends AbstractController
 
         return $this->render('api/sucess.html.twig');
     }
-    
+
     /**
      * @Route("/RegisterDevice", name="RegisterDevice", methods={"GET"})
      */
     public function RegisterDevice(Request $request): Response
     {
-        
         $userId = $request->get('userID');
         if (empty($userId)) {
             return $this->render('api/fail.html.twig');
         }
         try {
-             $user = $this->getDoctrine()
+            $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
         } catch (Exception $e) {
-             return $this->render('api/fail.html.twig');
+            return $this->render('api/fail.html.twig');
         }
-       
+
         if (!$user) {
             return $this->render('api/fail.html.twig');
         } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
             return $this->render('api/fail.html.twig');
         }
+
         return $this->render('api/sucess.html.twig');
     }
-    
 }

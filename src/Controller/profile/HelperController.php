@@ -72,8 +72,8 @@ class HelperController extends AbstractController
         }
 
         return $this->render('profile/helper/edit.html.twig', [
-            'form' => $form->createView(),
-        ]);
+                'form' => $form->createView(),
+            ]);
     }
 
     /**

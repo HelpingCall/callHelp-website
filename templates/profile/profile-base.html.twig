@@ -58,11 +58,12 @@
                                 <ul id="navigation">
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_start') %}active{% endif %}"><a href="{{path('profile_start')}}"> {{ 'menuebar.profile.home'|trans }}</a></li>
                                     <li class="{% if app.request.attributes.get('_route') is same as('profile_billing_list') %}active{% endif %}"><a href="{{ path('profile_billing_list') }}">{{ 'menuebar.profile.billing'|trans }}</a></li>
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown" >
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{'profile.nav.dropdown.setup-personaldata'| trans}}
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="
+                                       ">
                                             <a class="dropdown-item" href="{{path('profile_personaldata_changePassword')}}">{{ 'menuebar.profile.updatePasswordandEmail'|trans }}</a>
                                             <a class="dropdown-item" href="{{path('profile_personaldata_updateAdress')}}">{{ 'menuebar.profile.updateAdress'|trans }}</a>
                                             <a class="dropdown-item" href="{{path('profile_personaldata_updateContact')}}">{{ 'menuebar.profile.updateContact'|trans }}</a>
