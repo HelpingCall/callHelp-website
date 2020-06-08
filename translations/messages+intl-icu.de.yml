@@ -33,8 +33,8 @@ menuebar.pricing: Preise
 menuebar.contact: Kontakt
 footer.info: HelpingCall
 footer.quicklinks.heading: Schnelllinks
-footer.quicklinks.link.1: ''
-footer.quicklinks.link.2: ''
+footer.quicklinks.link.1: 'Impressum'
+footer.quicklinks.link.2: 'Datenschutzerklärung'
 footer.quicklinks.link.3: ''
 footer.quicklinks.link.4: ''
 footer.quicklinks.link.5: ''
@@ -44,7 +44,7 @@ footer.support.link.2: ''
 footer.support.link.3: ''
 footer.support.link.4: ''
 footer.support.link.5: ''
-footer.newsletter.heading: 'Newsletter'
+footer.newsletter.heading: Newsletter
 footer.newsletter.decription: 'Melden Sie sich zu unserem Newsletter an'
 forms.mail: Email
 This value should be false.: 'Dieser Wert sollte false sein.'
@@ -165,7 +165,7 @@ mail.acount-confirm.speech: 'Guten Tag Herr/ Frau'
 mail.acount-confirm.activate-account: ''
 mail.acount-confirm.activate-account.text: ''
 mail.acount-confirm.activate-account.no-button: 'Sie sehen keinen Button?'
-mail.acount-help.help.text: ''
+mail.acount-help.help.text: 'Eine Person benötigt Ihre Hilfe. Diese Person finden Sie unter folgender Adresse:'
 mail.acount-confirm.activate-account.footer: ''
 title.profile.helper.edit: 'HelpingCall- Helfer editieren'
 title.profile.helper.list: 'HelpingCall- Helferübersicht'
@@ -255,11 +255,15 @@ customer.contact.edit.telephonenumber: Telefonnummer
 customer.contact.edit.email: EMail
 customer.contact.edit.firstname: Vorname
 customer.contact.edit.lastname: Nachname
-customer.adress.edit.street: 'Straße'
-customer.adress.edit.housenumber: 'Hausnumber'
-customer.adress.edit.zipcode: 'Postleitzahl'
-customer.adress.edit.city: 'Stadt'
+customer.adress.edit.street: Straße
+customer.adress.edit.housenumber: Hausnumber
+customer.adress.edit.zipcode: Postleitzahl
+customer.adress.edit.city: Stadt
 user.edit.email: EMail
-user.edit.plainPassword.first: Neues Passwort
-user.edit.plainPassword.second: Passwort wiederholen
-user.edit.plainPassword: Das Passwort ist nicht gültig
+user.edit.plainPassword.first: 'Neues Passwort'
+user.edit.plainPassword.second: 'Passwort wiederholen'
+user.edit.plainPassword: 'Das Passwort ist nicht gültig'
+"This value should be the user''''''''s current password.": ''
+mail.helper.speech: Guten Tag Herr/Frau
+mail.acount-help.help.text.medicals: Die Liste der Medikamente finden Sie hier:
+mail.further-information: Weitere Informationen:
