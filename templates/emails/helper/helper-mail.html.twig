@@ -10,7 +10,7 @@
             <p>{{ 'mail.acount-help.help.text.medicals'|trans }}</p>
             <p>
                 {% for medical in medicals %}
-                    <li>{{ medical.name }} {{ medical.dosis }} x{{ 'profile.medical.daily'|trans }}  {{ 'mail.further-information'|trans }} <a href="{{ medical.link }}"> hier</a></li>
+                    <li>{{ medical.name }} {{ medical.dosis }} x{{ 'profile.medical.daily'|trans }}  <a href="{{ medical.link }}"> {{ 'mail.further-information'|trans }} </a></li>
                 {% endfor %}
             </p>
 
