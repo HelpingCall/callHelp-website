@@ -4,10 +4,14 @@
         {% block title %}{{ 'mail.acount-confirm.speech'|trans }} {{ name }}{% endblock %}
         {% block body %}
             <p>{{ 'mail.acount-help.help.text'|trans }}</p>
-            {{place}}
             <p>
+                {{place}}
             </p>
+            <p>{{ 'mail.acount-help.help.text.medicals'|trans }}</p>
             <p>
+                {% for medical in medicals %}
+                    <li>{{ medical.name }} {{ medical.dosis }} x {{ 'profile.medical.daily'|trans }}  {{ 'mail.further-information'|trans }} <a href="{{ medical.link }}"> hier</a></li>
+                {% endfor %}
             </p>
 
         {% endblock %}

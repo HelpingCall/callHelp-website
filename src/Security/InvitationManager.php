@@ -61,8 +61,6 @@ class InvitationManager extends AbstractController
             UrlGeneratorInterface::ABSOLUTE_URL);
         $name = $invitation->getFirstname().' '.$invitation->getLastname();
 
-        $handle = fopen('help.txt', 'w+');
-        fwrite($handle, $confirmLink);
         $invitation->setToken($uniqueId);
         $this->entityManager->flush();
         $header = "MIME-Version: 1.0\r\n";
