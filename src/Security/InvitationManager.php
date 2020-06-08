@@ -67,7 +67,7 @@ class InvitationManager extends AbstractController
         $header .= "Content-type: text/html; charset=utf-8\r\n";
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
 
-        mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang fürHelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
+        mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang für HelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
             'lastname' => $invitation->getLastname(),
             'confirmLink' => $confirmLink,
         ]), $header);
