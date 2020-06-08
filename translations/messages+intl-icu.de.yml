@@ -33,8 +33,8 @@ menuebar.pricing: Preise
 menuebar.contact: Kontakt
 footer.info: HelpingCall
 footer.quicklinks.heading: Schnelllinks
-footer.quicklinks.link.1: ''
-footer.quicklinks.link.2: ''
+footer.quicklinks.link.1: Impressum
+footer.quicklinks.link.2: Datenschutzerklärung
 footer.quicklinks.link.3: ''
 footer.quicklinks.link.4: ''
 footer.quicklinks.link.5: ''
@@ -224,7 +224,7 @@ button.end-register: 'Registrierung abschließen'
 register.password-strength-error: 'Ihr Passwort muss mindestens einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.'
 register.password-confirm-error: 'Die Passwörter stimmen nicht überein.'
 register.password-length-error: 'Das Passwort muss mindestens 6 Zeichen lang sein.'
-'This value should be the user''''''''s current password.': 'Dieser Wert sollte dem aktuellen Benutzerpasswort entsprechen.'
+'This value should be the users current password.': 'Dieser Wert sollte dem aktuellen Benutzerpasswort entsprechen.'
 button.save: Speichern
 button.cancel: Abbrechen
 title.medical.helper.edit: 'Helping Call- Medikamente bearbeiten'
