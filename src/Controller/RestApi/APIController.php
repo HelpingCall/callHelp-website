@@ -62,7 +62,7 @@ class APIController extends AbstractController
         $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
-
+        $medicals = $user->getMedicals();
         $helper = new Helper();
         foreach ($helpers as $helper) {
             $email = $helper->getEmail();
@@ -70,6 +70,7 @@ class APIController extends AbstractController
             mail($email, 'Ein Nutzer braucht Ihre Hilfe', $this->renderView('emails/helper/helper-mail.html.twig', [
                 'name' => $name,
                 'place' => $result,
+                'medicals' => $medicals,
             ]), $header);
         }
 
@@ -103,6 +104,7 @@ class APIController extends AbstractController
         foreach ($helpers as $helper) {
             $email = $helper->getEmail();
             $name = $helper->getFirstname().' '.$helper->getLastname();
+
             mail($email, 'Ein Nutzer benötigt nicht mehr Ihre Hilfe', $this->renderView('emails/helper/helper-mail-disarm.html.twig', [
                 'name' => $name,
             ]), $header);

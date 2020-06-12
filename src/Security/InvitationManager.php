@@ -61,15 +61,13 @@ class InvitationManager extends AbstractController
             UrlGeneratorInterface::ABSOLUTE_URL);
         $name = $invitation->getFirstname().' '.$invitation->getLastname();
 
-        $handle = fopen('help.txt', 'w+');
-        fwrite($handle, $confirmLink);
         $invitation->setToken($uniqueId);
         $this->entityManager->flush();
         $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
 
-        mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang fürHelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
+        mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang für HelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
             'lastname' => $invitation->getLastname(),
             'confirmLink' => $confirmLink,
         ]), $header);
