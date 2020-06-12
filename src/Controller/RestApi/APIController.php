@@ -148,21 +148,15 @@ class APIController extends AbstractController
         if (empty($email) and !empty($plainPassword)) {
             $response->setData(['sucess' => false]);
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($email);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-        }
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findOneBy(['email' => $email]);
 
         if (!$user) {
             $response->setData(['sucess' => false]);
         }
 
-        $encodedPassword = $this->userPasswordEncoder->encodePassword($user, $plainPassword);
-
-        if (0 != strcmp($user->getPassword(), $encodedPassword)) {
+        if (!$this->userPasswordEncoder->isPasswordValid($user, $plainPassword)) {
             $response->setData(['sucess' => false]);
         } else {
             $response->setData(['sucess' => true, 'userID' => $user->getId(), 'jwt' => $user->getJwt()]);
