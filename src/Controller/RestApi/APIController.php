@@ -5,11 +5,14 @@ namespace App\Controller\RestApi;
 use App\Entity\Helper;
 use App\Entity\User;
 use App\Services\GeoCoderApi;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class APIController extends AbstractController
 {
@@ -18,10 +21,17 @@ class APIController extends AbstractController
      */
     private $mailer;
 
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $userPasswordEncoder;
+
     public function __construct(
-        MailerInterface $mailer
+        MailerInterface $mailer,
+        UserPasswordEncoderInterface $passwordEncoder
     ) {
         $this->mailer = $mailer;
+        $this->userPasswordEncoder = $passwordEncoder;
     }
 
     /**
@@ -125,5 +135,34 @@ class APIController extends AbstractController
         }
 
         return $this->render('api/sucess.html.twig');
+    }
+
+
+    /**
+     * @Route("/login", name="login", methods={"GET"})
+     */
+    public function login(Request $request): Response
+    {
+        $response = new JsonResponse();
+        $email = $request->get('email');
+        $plainPassword = $request->get('password');
+        if (empty($email) and !empty($plainPassword)) {
+            $response->setData(['sucess' => false]);
+        }
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findOneBy(['email' => $email]);
+
+        if (!$user) {
+            $response->setData(['sucess' => false]);
+        }
+
+        if (!$this->userPasswordEncoder->isPasswordValid($user, $plainPassword)) {
+            $response->setData(['sucess' => false]);
+        } else {
+            $response->setData(['sucess' => true, 'userID' => $user->getId(), 'jwt' => $user->getJwt()]);
+        }
+
+        return $response;
     }
 }
