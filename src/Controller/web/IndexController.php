@@ -30,6 +30,22 @@ final class IndexController extends AbstractController
     }
 
     /**
+     * @Route("/privacy", name="privacy", methods={"GET"})
+     */
+    public function privacy(Request $request): Response
+    {
+        return $this->render('web/static/privacy.html.twig');
+    }
+
+    /**
+     * @Route("/imprint", name="imprint", methods={"GET"})
+     */
+    public function imprint(Request $request): Response
+    {
+        return $this->render('web/static/imprint.html.twig');
+    }
+
+    /**
      * @Route("/feature", name="feature", methods={"GET"})
      */
     public function feature(Request $request): Response

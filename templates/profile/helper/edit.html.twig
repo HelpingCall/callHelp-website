@@ -10,9 +10,9 @@
                     {{ form_row(form.firstname) }}
                     {{ form_row(form.lastname) }}
                     {{ form_row(form.email) }}
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">{{'button.save'|trans}}</button>
 
-                    <a href="{{ path('profile_helper_list') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ path('profile_helper_list') }}" class="btn btn-secondary">{{'button.cancel'|trans}}</a>
                     {{ form_end(form) }}
                 </div>
             </div>
