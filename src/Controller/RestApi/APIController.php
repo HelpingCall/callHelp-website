@@ -139,7 +139,6 @@ class APIController extends AbstractController
         return $this->render('api/sucess.html.twig');
     }
 
-
     /**
      * @Route("/login", name="login", methods={"GET"})
      */
