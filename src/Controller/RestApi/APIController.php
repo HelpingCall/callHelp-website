@@ -2,9 +2,11 @@
 
 namespace App\Controller\RestApi;
 
+use App\Entity\Device;
 use App\Entity\Helper;
 use App\Entity\User;
 use App\Services\GeoCoderApi;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +19,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class APIController extends AbstractController
 {
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+    /**
      * @var MailerInterface
      */
     private $mailer;
@@ -28,10 +34,12 @@ class APIController extends AbstractController
 
     public function __construct(
         MailerInterface $mailer,
-        UserPasswordEncoderInterface $passwordEncoder
+        UserPasswordEncoderInterface $passwordEncoder,
+        EntityManagerInterface $entityManager
     ) {
         $this->mailer = $mailer;
         $this->userPasswordEncoder = $passwordEncoder;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -136,6 +144,15 @@ class APIController extends AbstractController
         } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
             return $this->render('api/fail.html.twig');
         }
+        $device = new Device();
+
+        $device->setBatteryState(100.00);
+        $device->setDeviceID('CHF'.$device->getDeviceID());
+        $user->addDevice($device);
+
+        $this->entityManager->persist($device);
+
+        $this->entityManager->flush();
 
         return $this->render('api/sucess.html.twig');
     }
