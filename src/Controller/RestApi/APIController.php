@@ -60,7 +60,6 @@ class APIController extends AbstractController
 
         $result = $geocode->reversGeocoding($lat, $long);
 
-
         $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
