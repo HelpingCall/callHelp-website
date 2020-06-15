@@ -56,10 +56,16 @@ class User implements UserInterface
      */
     private $medicals;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Device::class, mappedBy="user")
+     */
+    private $device;
+
     public function __construct()
     {
         $this->helpers = new ArrayCollection();
         $this->medicals = new ArrayCollection();
+        $this->device = new ArrayCollection();
     }
 
     public function getId(): ?UuidInterface
@@ -206,6 +212,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($medical->getUser() === $this) {
                 $medical->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Device[]
+     */
+    public function getDevice(): Collection
+    {
+        return $this->device;
+    }
+
+    public function addDevice(Device $device): self
+    {
+        if (!$this->device->contains($device)) {
+            $this->device[] = $device;
+            $device->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDevice(Device $device): self
+    {
+        if ($this->device->contains($device)) {
+            $this->device->removeElement($device);
+            // set the owning side to null (unless already changed)
+            if ($device->getUser() === $this) {
+                $device->setUser(null);
             }
         }
 
