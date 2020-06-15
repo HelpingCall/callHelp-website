@@ -7,9 +7,51 @@
         <section class="service-area services-padding">
             <div class="container">
                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="section-tittle text-center">
+                            <h3> {{ 'profile.start.batterystate' | trans }}</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3">
 
+                                {% if percentage >50 %} }
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100">{{ percentage }} %</div>
+                                    </div>
+                                {% elseif percentage < 50 and percentage > 25 %}
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100">{{ percentage }} %</div>
+                                    </div>
+                                {% else %}
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100">{{ percentage }} %</div>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="map" style="height: 300px"></div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+        var map = L.map('map').setView([{{lastLat}}, {{lastLong}}], 20);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([{{lastLat}}, {{lastLong}}]).addTo(map)
+            .bindPopup('{{'profile.start.lastposition' | trans}}')
+            .openPopup();
+    </script>
 {% endblock %}

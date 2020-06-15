@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/leaflet.css')}}">
 </head>
 
 <body>
@@ -187,7 +188,7 @@
 </footer>
 
 <!-- JS here -->
-
+{% block javascripts_footer %}
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{asset('assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
@@ -224,5 +225,9 @@
 <script src="{{asset('assets/js/plugins.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
 
+
+<script src="{{asset('assets/js/leaflet.js')}}"></script>
+
+{% endblock %}
 </body>
 </html>

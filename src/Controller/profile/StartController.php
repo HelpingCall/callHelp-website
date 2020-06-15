@@ -15,6 +15,11 @@ class StartController extends AbstractController
      */
     public function start(): Response
     {
-        return $this->render('profile/start.html.twig');
+        return $this->render('profile/start.html.twig',
+            [
+                'percentage' => 25,
+                'lastLat' => 51.949117,
+                'lastLong' => 9.050944,
+            ]);
     }
 }
