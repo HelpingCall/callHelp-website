@@ -128,21 +128,22 @@ class APIController extends AbstractController
     public function RegisterDevice(Request $request): Response
     {
         $userId = $request->get('userID');
+        $response = new JsonResponse();
         if (empty($userId)) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
         }
         try {
             $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
         } catch (Exception $e) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
         }
 
         if (!$user) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
         } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
         }
         $device = new Device();
 
@@ -154,9 +155,9 @@ class APIController extends AbstractController
 
         $this->entityManager->flush();
 
-        return $this->render('api/sucess.html.twig', [
-            'deviceID' => $device->getId(),
-        ]);
+        $response->setData(['sucess' => true, 'deviceID' => $device->getId()]);
+
+        return $response;
     }
 
     /**
