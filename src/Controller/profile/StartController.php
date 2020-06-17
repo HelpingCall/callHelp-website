@@ -2,6 +2,7 @@
 
 namespace App\Controller\profile;
 
+use App\Entity\Device;
 use App\Entity\Helper;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,14 +20,15 @@ class StartController extends AbstractController
     {
         $helpers = $this->getDoctrine()->getRepository(Helper::class)->findBy(['userid' => $user->getID()]);
 
-        $percentage = count($helpers) / 10;
+        $percentageHelper = count($helpers) / 10;
 
+        $device = $this->getDoctrine()->getRepository(Device::class)->findOneBy(['user' => $user->getID()]);
         return $this->render('profile/start.html.twig',
             [
-                'percentage' => 25,
-                'lastLat' => 51.949117,
-                'lastLong' => 9.050944,
-                'helperPercentage' => $percentage,
+                'percentage' => $device->getBatteryState(),
+                'lastLat' => $device->getLastLat(),
+                'lastLong' => $device->getLastLong(),
+                'helperPercentage' => $percentageHelper,
                 'helper' => count($helpers),
                 'maxHelper' => '10',
             ]);
