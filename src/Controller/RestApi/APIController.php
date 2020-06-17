@@ -147,14 +147,16 @@ class APIController extends AbstractController
         $device = new Device();
 
         $device->setBatteryState(100.00);
-        $device->setDeviceID('CHF'.$device->getDeviceID());
+
         $user->addDevice($device);
 
         $this->entityManager->persist($device);
 
         $this->entityManager->flush();
 
-        return $this->render('api/sucess.html.twig');
+        return $this->render('api/sucess.html.twig', [
+            'deviceID' => $device->getId(),
+        ]);
     }
 
     /**
@@ -165,7 +167,7 @@ class APIController extends AbstractController
         $response = new JsonResponse();
         $email = $request->get('email');
         $plainPassword = $request->get('password');
-        if (empty($email) and !empty($plainPassword)) {
+        if (empty($email) and empty($plainPassword)) {
             $response->setData(['sucess' => false]);
         }
         $user = $this->getDoctrine()
@@ -183,5 +185,29 @@ class APIController extends AbstractController
         }
 
         return $response;
+    }
+
+    /**
+     * @Route("/batteryState", name="batteryState", methods={"GET"})
+     */
+    public function batteryState(Request $request): Response
+    {
+        $deviceId = $request->get('deviceID');
+        $batteryState = $request->get('batteryState');
+        if (empty($device) and empty($batteryState)) {
+            return $this->render('api/fail.html.twig');
+        }
+        try {
+            $device = $this->getDoctrine()
+                ->getRepository(Device::class)
+                ->findOneBy($deviceId);
+            $device->setBatteryState($batteryState);
+
+            $this->entityManager->flush();
+        } catch (Exception $e) {
+            return $this->render('api/fail.html.twig');
+        }
+
+        return $this->render('api/sucess.html.twig');
     }
 }

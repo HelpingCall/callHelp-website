@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DeviceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass=DeviceRepository::class)
@@ -11,16 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Device
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var UuidInterface|null
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="uuid")
-     */
-    private $deviceID;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -45,18 +44,6 @@ class Device
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDeviceID()
-    {
-        return $this->deviceID;
-    }
-
-    public function setDeviceID($deviceID): self
-    {
-        $this->deviceID = $deviceID;
-
-        return $this;
     }
 
     public function getLastLat(): ?string
