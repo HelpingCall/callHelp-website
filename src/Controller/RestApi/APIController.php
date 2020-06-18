@@ -123,14 +123,16 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/RegisterDevice", name="RegisterDevice", methods={"GET"})
+     * @Route("/registerDevice", name="registerDevice", methods={"GET"})
      */
-    public function RegisterDevice(Request $request): Response
+    public function registerDevice(Request $request): Response
     {
         $userId = $request->get('userID');
         $response = new JsonResponse();
         if (empty($userId)) {
             $response->setData(['sucess' => false]);
+
+            return $response;
         }
         try {
             $user = $this->getDoctrine()
@@ -138,12 +140,18 @@ class APIController extends AbstractController
             ->find($userId);
         } catch (Exception $e) {
             $response->setData(['sucess' => false]);
+
+            return $response;
         }
 
         if (!$user) {
             $response->setData(['sucess' => false]);
+
+            return $response;
         } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
             $response->setData(['sucess' => false]);
+
+            return $response;
         }
         $device = new Device();
 
