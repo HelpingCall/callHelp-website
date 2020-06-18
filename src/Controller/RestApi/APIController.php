@@ -123,9 +123,9 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/registerDevice", name="registerDevice", methods={"GET"})
+     * @Route("/RegisterDevice", name="RegisterDevice", methods={"GET"})
      */
-    public function registerDevice(Request $request): Response
+    public function RegisterDevice(Request $request): Response
     {
         $userId = $request->get('userID');
         $response = new JsonResponse();
