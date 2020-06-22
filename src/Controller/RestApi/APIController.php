@@ -2,9 +2,11 @@
 
 namespace App\Controller\RestApi;
 
+use App\Entity\Device;
 use App\Entity\Helper;
 use App\Entity\User;
 use App\Services\GeoCoderApi;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +19,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class APIController extends AbstractController
 {
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+    /**
      * @var MailerInterface
      */
     private $mailer;
@@ -28,10 +34,12 @@ class APIController extends AbstractController
 
     public function __construct(
         MailerInterface $mailer,
-        UserPasswordEncoderInterface $passwordEncoder
+        UserPasswordEncoderInterface $passwordEncoder,
+        EntityManagerInterface $entityManager
     ) {
         $this->mailer = $mailer;
         $this->userPasswordEncoder = $passwordEncoder;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -52,6 +60,7 @@ class APIController extends AbstractController
             return $this->render('api/fail.html.twig');
         }
         $helpers = $user->getHelpers();
+
         $geocode = new GeoCoderApi();
 
         $lat = $request->get('lat');
@@ -119,24 +128,44 @@ class APIController extends AbstractController
     public function RegisterDevice(Request $request): Response
     {
         $userId = $request->get('userID');
+        $response = new JsonResponse();
         if (empty($userId)) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         try {
             $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
         } catch (Exception $e) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
 
         if (!$user) {
-            return $this->render('api/fail.html.twig');
-        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
-            return $this->render('api/fail.html.twig');
-        }
+            $response->setData(['sucess' => false]);
 
-        return $this->render('api/sucess.html.twig');
+            return $response;
+        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
+            $response->setData(['sucess' => false]);
+
+            return $response;
+        }
+        $device = new Device();
+
+        $device->setBatteryState(100.00);
+
+        $user->addDevice($device);
+
+        $this->entityManager->persist($device);
+
+        $this->entityManager->flush();
+
+        $response->setData(['sucess' => true, 'deviceID' => $device->getId()]);
+
+        return $response;
     }
 
     /**
@@ -147,8 +176,9 @@ class APIController extends AbstractController
         $response = new JsonResponse();
         $email = $request->get('email');
         $plainPassword = $request->get('password');
-        if (empty($email) and !empty($plainPassword)) {
+        if (empty($email) and empty($plainPassword)) {
             $response->setData(['sucess' => false]);
+            return $response;
         }
         $user = $this->getDoctrine()
             ->getRepository(User::class)
@@ -156,6 +186,7 @@ class APIController extends AbstractController
 
         if (!$user) {
             $response->setData(['sucess' => false]);
+            return $response;
         }
 
         if (!$this->userPasswordEncoder->isPasswordValid($user, $plainPassword)) {
@@ -165,5 +196,29 @@ class APIController extends AbstractController
         }
 
         return $response;
+    }
+
+    /**
+     * @Route("/batteryState", name="batteryState", methods={"GET"})
+     */
+    public function batteryState(Request $request): Response
+    {
+        $deviceId = $request->get('deviceID');
+        $batteryState = $request->get('batteryState');
+        if (empty($device) and empty($batteryState)) {
+            return $this->render('api/fail.html.twig');
+        }
+        try {
+            $device = $this->getDoctrine()
+                ->getRepository(Device::class)
+                ->findOneBy($deviceId);
+            $device->setBatteryState($batteryState);
+
+            $this->entityManager->flush();
+        } catch (Exception $e) {
+            return $this->render('api/fail.html.twig');
+        }
+
+        return $this->render('api/sucess.html.twig');
     }
 }
