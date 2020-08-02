@@ -266,3 +266,9 @@ user.edit.plainPassword: 'Das Passwort ist nicht gültig'
 mail.helper.speech: 'Guten Tag Herr/Frau'
 mail.acount-help.help.text.medicals: 'Die Liste der Medikamente finden Sie hier:'
 mail.further-information: 'Weitere Informationen'
+profile.start.batteryStateWarning: 'Die Batterie Ihres Gerätes ist fast leer, bitte laden Sie es auf'
+profile.start.batteryStateDanger: 'Die Batterie Ihres Gerätes hat einen kritischen Ladezustand, bitte laden Sie es umgehend auf'
+profile.start.batterystate: Batteriestatus
+profile.start.helperCount: 'Anzahl der Helfer'
+profile.start.lastposition: 'Letze bekannte Position'
+button.register: Registrieren

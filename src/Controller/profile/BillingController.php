@@ -19,6 +19,6 @@ class BillingController extends AbstractController
      */
     public function list(): Response
     {
-        return $this->render('profile/start.html.twig');
+        return $this->redirectToRoute('profile_start');
     }
 }
