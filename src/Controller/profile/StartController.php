@@ -23,6 +23,7 @@ class StartController extends AbstractController
         $percentageHelper = count($helpers) / 10;
 
         $device = $this->getDoctrine()->getRepository(Device::class)->findOneBy(['user' => $user->getID()]);
+
         return $this->render('profile/start.html.twig',
             [
                 'percentage' => $device->getBatteryState(),

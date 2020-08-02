@@ -178,6 +178,7 @@ class APIController extends AbstractController
         $plainPassword = $request->get('password');
         if (empty($email) and empty($plainPassword)) {
             $response->setData(['sucess' => false]);
+
             return $response;
         }
         $user = $this->getDoctrine()
@@ -186,6 +187,7 @@ class APIController extends AbstractController
 
         if (!$user) {
             $response->setData(['sucess' => false]);
+
             return $response;
         }
 
