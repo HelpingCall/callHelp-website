@@ -245,21 +245,30 @@ menuebar.profile.updateContact: 'Change contact data'
 menuebar.profile.medicals: 'Manage medication'
 profile.nav.dropdown.setup-personaldata: 'Personal data'
 profile.nav.dropdown.setup: Setup
-medical.edit.link: ''
-medical.edit.dosis: ""
-medical.edit.name: ""
-helper.edit.firstname: ""
-helper.edit.lastname: ""
-helper.edit.email: ""
-customer.contact.edit.telephonenumber: ""
-customer.contact.edit.email: ""
-customer.contact.edit.firstname: ""
-customer.contact.edit.lastname: ""
-customer.adress.edit.street: ''
-customer.adress.edit.housenumber: ''
-customer.adress.edit.zipcode: ''
-customer.adress.edit.city: ''
-user.edit.email: ""
-user.edit.plainPassword.first: ""
-user.edit.plainPassword.second: ""
-user.edit.plainPassword: ""
+medical.edit.link: 'Link  Gelben Liste'
+medical.edit.dosis: 'Dose'
+medical.edit.name: "Name"
+helper.edit.firstname: "Firstname"
+helper.edit.lastname: "Lastname"
+helper.edit.email: "Email"
+customer.contact.edit.telephonenumber: "Telephonenumber"
+customer.contact.edit.email: "EMail"
+customer.contact.edit.firstname: "Firstname"
+customer.contact.edit.lastname: "Lastname"
+customer.adress.edit.street: 'Street'
+customer.adress.edit.housenumber: 'Housenumber'
+customer.adress.edit.zipcode: 'Zipcode'
+customer.adress.edit.city: 'City'
+user.edit.email: "Email"
+user.edit.plainPassword.first: "New Password"
+user.edit.plainPassword.second: "Confirm new password"
+user.edit.plainPassword: "Password not allowed"
+mail.helper.speech: 'Dear'
+mail.acount-help.help.text.medicals: 'Following is the list of medicals'
+mail.further-information: 'Further Informations'
+profile.start.batteryStateWarning: 'The battery of your system is low, please recharge.'
+profile.start.batteryStateDanger: 'The battery of your system is critical, please recharge immadently.'
+profile.start.batterystate: Batterystate
+profile.start.helperCount: 'Count of helper'
+profile.start.lastposition: 'Last seen position'
+button.register: Register
