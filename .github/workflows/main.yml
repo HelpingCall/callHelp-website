@@ -18,8 +18,9 @@ jobs:
                     ini-values: post_max_size=256M, short_open_tag=On
                     coverage: none
 
-            -   name: Install php dependencies
-                run: composer install --prefer-dist --no-progress --no-suggest
+            -   name: Install php dependencies 
+                run: composer require ramsey/uuid-doctrine composer install --prefer-dist --no-progress --no-suggest
+                
 
             -   name: lint twig
                 run: php bin/console lint:twig templates
