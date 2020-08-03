@@ -18,10 +18,8 @@ jobs:
                     ini-values: post_max_size=256M, short_open_tag=On
                     coverage: none
 
-            -   name: Update php dependencies 
-                run: composer require ramsey/uuid-doctrine 
             -   name: Install php dependencies 
-                run: composer install --prefer-dist --no-progress --no-suggest
+                run: composer install 
                 
 
             -   name: lint twig
