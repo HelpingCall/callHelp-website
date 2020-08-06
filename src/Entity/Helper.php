@@ -98,7 +98,7 @@ class Helper
             'firstName' => $this->getFirstName(),
             'lastName' => $this->getLastName(),
             'email' => $this->getEmail(),
-            'userID' => $this->getUserid(),
+            'userID' => $this->getUserid()->getId(),
         ];
     }
 }

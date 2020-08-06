@@ -441,7 +441,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getHelper", name="get_Medical", methods={"GET"})
+     * @Route("/getHelper", name="get_Helper", methods={"GET"})
      */
     public function getHelper(Request $request): Response
     {
