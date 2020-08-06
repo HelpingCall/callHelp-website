@@ -47,24 +47,31 @@ class APIController extends AbstractController
      */
     public function arm(Request $request): Response
     {
-        $userId = $request->get('userID');
+        $response = new JsonResponse();
+        $data = json_decode($request->getContent(), true);
+
+        $userId = $data['userID'];
+        $jwt = $data['jwt'];
+        $lat = $data['latitude'];
+        $long = $data['longitude'];
         if (empty($userId)) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
         if (!$user) {
             return $this->render('api/fail.html.twig');
-        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
-            return $this->render('api/fail.html.twig');
+        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         $helpers = $user->getHelpers();
 
         $geocode = new GeoCoderApi();
-
-        $lat = $request->get('lat');
-        $long = $request->get('long');
 
         $result = $geocode->reversGeocoding($lat, $long);
 
@@ -83,7 +90,9 @@ class APIController extends AbstractController
             ]), $header);
         }
 
-        return $this->render('api/sucess.html.twig');
+        $response->setData(['sucess' => true]);
+
+        return $response;
     }
 
     /**
@@ -91,17 +100,28 @@ class APIController extends AbstractController
      */
     public function disarm(Request $request): Response
     {
-        $userId = $request->get('userID');
+        $response = new JsonResponse();
+
+        $data = json_decode($request->getContent(), true);
+
+        $userId = $data['userID'];
+        $jwt = $data['jwt'];
         if (empty($userId)) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->find($userId);
         if (!$user) {
-            return $this->render('api/fail.html.twig');
-        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
+        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         $helpers = $user->getHelpers();
 
@@ -119,7 +139,9 @@ class APIController extends AbstractController
             ]), $header);
         }
 
-        return $this->render('api/sucess.html.twig');
+        $response->setData(['sucess' => true]);
+
+        return $response;
     }
 
     /**
@@ -127,7 +149,9 @@ class APIController extends AbstractController
      */
     public function RegisterDevice(Request $request): Response
     {
-        $userId = $request->get('userID');
+        $data = json_decode($request->getContent(), true);
+
+        $userId = $data['userID'];
         $response = new JsonResponse();
         if (empty($userId)) {
             $response->setData(['sucess' => false]);
@@ -174,8 +198,10 @@ class APIController extends AbstractController
     public function login(Request $request): Response
     {
         $response = new JsonResponse();
-        $email = $request->get('email');
-        $plainPassword = $request->get('password');
+        $data = json_decode($request->getContent(), true);
+
+        $email = $data['email'];
+        $plainPassword = $data['password'];
         if (empty($email) and empty($plainPassword)) {
             $response->setData(['sucess' => false]);
 
@@ -205,10 +231,15 @@ class APIController extends AbstractController
      */
     public function batteryState(Request $request): Response
     {
-        $deviceId = $request->get('deviceID');
-        $batteryState = $request->get('batteryState');
+        $response = new JsonResponse();
+        $data = json_decode($request->getContent(), true);
+
+        $deviceId = $data['deviceID'];
+        $batteryState = $data['batteryState'];
         if (empty($device) and empty($batteryState)) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
         try {
             $device = $this->getDoctrine()
@@ -218,9 +249,13 @@ class APIController extends AbstractController
 
             $this->entityManager->flush();
         } catch (Exception $e) {
-            return $this->render('api/fail.html.twig');
+            $response->setData(['sucess' => false]);
+
+            return $response;
         }
 
-        return $this->render('api/sucess.html.twig');
+        $response->setData(['sucess' => true]);
+
+        return $response;
     }
 }
