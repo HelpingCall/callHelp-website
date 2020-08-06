@@ -55,17 +55,13 @@ class APIController extends AbstractController
         $jwt = $data['jwt'];
         $lat = $data['latitude'];
         $long = $data['longitude'];
-        if (empty($userId)) {
+        if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
 
             return $response;
         }
-        $user = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($userId);
-        if (!$user) {
-            return $this->render('api/fail.html.twig');
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -107,19 +103,13 @@ class APIController extends AbstractController
 
         $userId = $data['userID'];
         $jwt = $data['jwt'];
-        if (empty($userId)) {
+        if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
 
             return $response;
         }
-        $user = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($userId);
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -153,27 +143,15 @@ class APIController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $userId = $data['userID'];
+        $jwt = $data['jwt'];
         $response = new JsonResponse();
         if (empty($userId)) {
             $response->setData(['sucess' => false]);
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -280,21 +258,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $request->get('jwt'))) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -342,21 +307,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -400,21 +352,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -445,21 +384,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -490,21 +416,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -543,30 +456,19 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
         }
 
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
         $helpers = $user->getHelpers();
 
         $data = [];
         foreach ($helpers as $helper) {
             if (0 != strcmp($helper->getId(), $helperId)) {
+                continue;
             }
             $data[] = $helper->toArray();
         }
@@ -597,21 +499,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -656,21 +545,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -715,21 +591,9 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
-            $response->setData(['sucess' => false]);
 
-            return $response;
-        }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -770,26 +634,12 @@ class APIController extends AbstractController
 
             return $response;
         }
-        try {
-            $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($userId);
-        } catch (Exception $e) {
+        $user = $this->verifyUser($userId, $jwt);
+        if (null == $user) {
             $response->setData(['sucess' => false]);
 
             return $response;
         }
-
-        if (!$user) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
-            $response->setData(['sucess' => false]);
-
-            return $response;
-        }
-
         try {
             $helper = $this->getDoctrine()
                 ->getRepository(Helper::class)
@@ -806,5 +656,24 @@ class APIController extends AbstractController
         $response->setData(['sucess' => true]);
 
         return $response;
+    }
+
+    private function verifyUser($userId, $jwt): ?User
+    {
+        try {
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($userId);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        if (!$user) {
+            return null;
+        } elseif (0 != strcmp($user->getJWT(), $jwt)) {
+            return null;
+        }
+
+        return $user;
     }
 }
