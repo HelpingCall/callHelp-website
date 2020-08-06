@@ -90,4 +90,15 @@ class Medicals
 
         return $this;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'dose' => $this->getDosis(),
+            'link' => $this->getLink(),
+            'userID' => $this->getUser()->getId(),
+        ];
+    }
 }
