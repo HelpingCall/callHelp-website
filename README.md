@@ -1,6 +1,6 @@
 # callHelp-website
 
-This website is based on Symfony 4.
+This website is based on Symfony 5.1.
 
 ## Getting started
 1. Clone this repository
