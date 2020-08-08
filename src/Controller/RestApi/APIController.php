@@ -50,19 +50,28 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $lat = $data['latitude'];
+            $long = $data['longitude'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $lat = $data['latitude'];
-        $long = $data['longitude'];
+            return $response;
+        }
+
         if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -88,6 +97,7 @@ class APIController extends AbstractController
         }
 
         $response->setData(['sucess' => true]);
+        $response->setStatusCode(Response::HTTP_OK);
 
         return $response;
     }
@@ -101,16 +111,26 @@ class APIController extends AbstractController
 
         $data = json_decode($request->getContent(), true);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+
+            return $response;
+        }
+
         if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -131,6 +151,7 @@ class APIController extends AbstractController
         }
 
         $response->setData(['sucess' => true]);
+        $response->setStatusCode(Response::HTTP_OK);
 
         return $response;
     }
@@ -141,10 +162,17 @@ class APIController extends AbstractController
     public function RegisterDevice(Request $request): Response
     {
         $data = json_decode($request->getContent(), true);
-
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
         $response = new JsonResponse();
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+
+            return $response;
+        }
+
         if (empty($userId)) {
             $response->setData(['sucess' => false]);
 
@@ -153,6 +181,7 @@ class APIController extends AbstractController
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -167,6 +196,7 @@ class APIController extends AbstractController
         $this->entityManager->flush();
 
         $response->setData(['sucess' => true, 'deviceID' => $device->getId()]);
+        $response->setStatusCode(Response::HTTP_OK);
 
         return $response;
     }
@@ -178,11 +208,18 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $email = $data['email'];
+            $plainPassword = $data['password'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $email = $data['email'];
-        $plainPassword = $data['password'];
+            return $response;
+        }
         if (empty($email) and empty($plainPassword)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -198,25 +235,34 @@ class APIController extends AbstractController
 
         if (!$this->userPasswordEncoder->isPasswordValid($user, $plainPassword)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
         } else {
             $response->setData(['sucess' => true, 'userID' => $user->getId(), 'jwt' => $user->getJwt()]);
+            $response->setStatusCode(Response::HTTP_OK);
         }
 
         return $response;
     }
 
     /**
-     * @Route("/batteryState", name="batteryState", methods={"GET"})
+     * @Route("/batteryState", name="batteryState", methods={"POST"})
      */
     public function batteryState(Request $request): Response
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $deviceId = $data['deviceID'];
+            $batteryState = $data['batteryState'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $deviceId = $data['deviceID'];
-        $batteryState = $data['batteryState'];
+            return $response;
+        }
         if (empty($device) and empty($batteryState)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -229,6 +275,7 @@ class APIController extends AbstractController
             $this->entityManager->flush();
         } catch (Exception $e) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -245,22 +292,30 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
+            $helperFirstname = $data['firstname'];
+            $helperLastname = $data['lastname'];
+            $helperEmail = $data['email'];
+        } catch (Exception $e) {
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            $response->setData(['sucess' => false]);
 
-        $helperFirstname = $data['firstname'];
-        $helperLastname = $data['lastname'];
-        $helperEmail = $data['email'];
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt) or empty($helperFirstname) or empty($helperLastname) or empty($helperEmail)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -278,6 +333,7 @@ class APIController extends AbstractController
             $this->entityManager->flush();
         } catch (Exception $e) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -294,15 +350,21 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
+            $medicalName = $data['name'];
+            $medicalDose = $data['dose'];
+            $medicalLink = $data['link'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $medicalName = $data['name'];
-        $medicalDose = $data['dose'];
-        $medicalLink = $data['link'];
+            return $response;
+        }
 
-        if (empty($userId) or empty($jwt) or empty($medicalName) or empty($medicalDose) or empty($medicalLink)) {
+        if (empty($userId) or empty($jwt) or empty($medicalName) or empty($medicalDose)) {
             $response->setData(['sucess' => false]);
 
             return $response;
@@ -310,6 +372,7 @@ class APIController extends AbstractController
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -327,6 +390,7 @@ class APIController extends AbstractController
             $this->entityManager->flush();
         } catch (Exception $e) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -343,18 +407,26 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -375,18 +447,26 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -407,18 +487,26 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $medicalId = $data['medicalID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $medicalId = $data['medicalID'];
+            return $response;
+        }
         if (empty($userId) or empty($jwt) or empty($medicalId)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -433,6 +521,7 @@ class APIController extends AbstractController
 
         if (empty($data)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -447,18 +536,26 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $helperId = $data['helperID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $helperId = $data['helperID'];
+            return $response;
+        }
         if (empty($userId) or empty($jwt) or empty($medicalId)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
         $user = $this->verifyUser($userId, $jwt);
         if (null == $user) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -475,6 +572,7 @@ class APIController extends AbstractController
 
         if (empty($data)) {
             $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
             return $response;
         }
@@ -489,10 +587,16 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $medicalId = $data['medicalID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $medicalId = $data['medicalID'];
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt) or empty($medicalId)) {
             $response->setData(['sucess' => false]);
@@ -535,10 +639,16 @@ class APIController extends AbstractController
     {
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $helperId = $data['helperID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $helperId = $data['helperID'];
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt) or empty($helperId)) {
             $response->setData(['sucess' => false]);
@@ -582,9 +692,16 @@ class APIController extends AbstractController
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $medicalId = $data['medicalID'];
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $medicalId = $data['medicalID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt) or empty($medicalId)) {
             $response->setData(['sucess' => false]);
@@ -625,9 +742,16 @@ class APIController extends AbstractController
         $response = new JsonResponse();
         $data = json_decode($request->getContent(), true);
 
-        $userId = $data['userID'];
-        $jwt = $data['jwt'];
-        $helperId = $data['helperID'];
+        try {
+            $userId = $data['userID'];
+            $jwt = $data['jwt'];
+            $helperId = $data['helperID'];
+        } catch (Exception $e) {
+            $response->setData(['sucess' => false]);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+
+            return $response;
+        }
 
         if (empty($userId) or empty($jwt) or empty($helperId)) {
             $response->setData(['sucess' => false]);
