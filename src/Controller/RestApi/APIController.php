@@ -591,6 +591,9 @@ class APIController extends AbstractController
             $userId = $data['userID'];
             $jwt = $data['jwt'];
             $medicalId = $data['medicalID'];
+            $medicalName = $data['medicalName'];
+            $medicalDosis = $data['medicalDose'];
+            $medicalLink = $data['medicalLink'];
         } catch (Exception $e) {
             $response->setData(['sucess' => false]);
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -620,9 +623,9 @@ class APIController extends AbstractController
             return $response;
         }
 
-        empty($data['medicalName']) ? true : $medical->setName($data['medicalName']);
-        empty($data['medicalLink']) ? true : $medical->setLink($data['medicalLink']);
-        empty($data['medicalDose']) ? true : $medical->setDosis($data['medicalDose']);
+        empty($medicalName) ? true : $medical->setName($medicalName);
+        empty($medicalDosis) ? true : $medical->setDosis($medicalDosis);
+        $medical->setLink($medicalLink);
 
         $this->entityManager->persist($medical);
         $this->entityManager->flush();
