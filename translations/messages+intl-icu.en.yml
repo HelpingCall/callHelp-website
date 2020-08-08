@@ -272,3 +272,4 @@ profile.start.batterystate: Batterystate
 profile.start.helperCount: 'Count of helper'
 profile.start.lastposition: 'Last seen position'
 button.register: Register
+profile.nodevice: You don´t have a registered device, here you will see important information about your device.

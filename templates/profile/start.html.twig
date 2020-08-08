@@ -7,7 +7,7 @@
         <section class="service-area services-padding">
 
             <div class="container">
-
+            {% if device %}
                             {% if percentage >50 %}
 
                             {% elseif percentage < 50 and percentage > 25 %}
@@ -89,6 +89,20 @@
 
                     </div>
                 </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="margin-top:-15%">
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{'profile.nodevice'|trans}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </section>
     </main>
@@ -96,55 +110,58 @@
 
 {% block javascripts_footer %}
     {{ parent() }}
-    <script>
-        var map = L.map('map').setView([{{lastLat}}, {{lastLong}}], 20);
+    {% if device %}
+        <script>
+            var map = L.map('map').setView([{{lastLat}}, {{lastLong}}], 20);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
-        L.marker([{{lastLat}}, {{lastLong}}]).addTo(map)
-            .bindPopup('{{'profile.start.lastposition' | trans}}')
-            .openPopup();
+            L.marker([{{lastLat}}, {{lastLong}}]).addTo(map)
+                .bindPopup('{{'profile.start.lastposition' | trans}}')
+                .openPopup();
 
-        var helperPercentage = parseFloat({{ helperPercentage }});
-        var colorCircle= '#664A7F';
-        if (helperPercentage >= 0.8){
-            colorCircle = '#DC3545';
-        } else if(helperPercentage >= 0.6){
-            colorCircle ='#FFC107';
-        }
-        var bar = new ProgressBar.Circle(container, {
-            color: '#664A7F',
-            // This has to be the same size as the maximum width to
-            // prevent clipping
-            strokeWidth: 4,
-            trailWidth: 1,
-            easing: 'easeInOut',
-            duration: 1400,
-            text: {
-                autoStyleContainer: false
-            },
-
-            from: { color: colorCircle, width: 4 },
-            to: { color: colorCircle, width: 4 },
-            // Set default step function for all animate calls
-            step: function(state, circle) {
-                circle.path.setAttribute('stroke', state.color);
-                circle.path.setAttribute('stroke-width', state.width);
-
-                var value = {{ helper }} + '/'+ {{ maxHelper }};
-                if (value === 0) {
-                    circle.setText('');
-                } else {
-                    circle.setText(value );
-                }
-
+            var helperPercentage = parseFloat({{ helperPercentage }});
+            var colorCircle= '#664A7F';
+            if (helperPercentage >= 0.8){
+                colorCircle = '#DC3545';
+            } else if(helperPercentage >= 0.6){
+                colorCircle ='#FFC107';
             }
-        });
-        bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-        bar.text.style.fontSize = '2rem';
+            var bar = new ProgressBar.Circle(container, {
+                color: '#664A7F',
+                // This has to be the same size as the maximum width to
+                // prevent clipping
+                strokeWidth: 4,
+                trailWidth: 1,
+                easing: 'easeInOut',
+                duration: 1400,
+                text: {
+                    autoStyleContainer: false
+                },
 
-        bar.animate({{ helperPercentage }});  // Number from 0.0 to 1.0
-    </script>
+                from: { color: colorCircle, width: 4 },
+                to: { color: colorCircle, width: 4 },
+                // Set default step function for all animate calls
+                step: function(state, circle) {
+                    circle.path.setAttribute('stroke', state.color);
+                    circle.path.setAttribute('stroke-width', state.width);
+
+                    var value = {{ helper }} + '/'+ {{ maxHelper }};
+                    if (value === 0) {
+                        circle.setText('');
+                    } else {
+                        circle.setText(value );
+                    }
+
+                }
+            });
+            bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+            bar.text.style.fontSize = '2rem';
+
+            bar.animate({{ helperPercentage }});  // Number from 0.0 to 1.0
+        </script>
+    {% endif %}
 {% endblock %}
+

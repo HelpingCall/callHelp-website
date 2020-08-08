@@ -23,15 +23,22 @@ class StartController extends AbstractController
         $percentageHelper = count($helpers) / 10;
 
         $device = $this->getDoctrine()->getRepository(Device::class)->findOneBy(['user' => $user->getID()]);
+        if (!$device) {
+            return $this->render('profile/start.html.twig',
+                    [
+                        'device' => false,
+                    ]);
+        }
 
         return $this->render('profile/start.html.twig',
-            [
-                'percentage' => $device->getBatteryState(),
-                'lastLat' => $device->getLastLat(),
-                'lastLong' => $device->getLastLong(),
-                'helperPercentage' => $percentageHelper,
-                'helper' => count($helpers),
-                'maxHelper' => '10',
-            ]);
+                [
+                    'device' => true,
+                    'percentage' => $device->getBatteryState(),
+                    'lastLat' => $device->getLastLat(),
+                    'lastLong' => $device->getLastLong(),
+                    'helperPercentage' => $percentageHelper,
+                    'helper' => count($helpers),
+                    'maxHelper' => '10',
+                ]);
     }
 }
