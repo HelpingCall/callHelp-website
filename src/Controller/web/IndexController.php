@@ -106,7 +106,7 @@ final class IndexController extends AbstractController
      */
     public function order(Request $request): Response
     {
-        return $this->redirectToRoute('web_register');
+        return $this->redirectToRoute('web_index');
     }
 
     /**
@@ -115,6 +115,6 @@ final class IndexController extends AbstractController
     public function download(Request $request): Response
     {
 
-        return $this->redirectToRoute('web_register');
+        return $this->redirectToRoute('web_index');
     }
 }
