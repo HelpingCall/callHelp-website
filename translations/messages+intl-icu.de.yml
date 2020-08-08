@@ -273,3 +273,10 @@ profile.start.helperCount: 'Anzahl der Helfer'
 profile.start.lastposition: 'Letze bekannte Position'
 button.register: Registrieren
 profile.nodevice: 'Auf Ihren Nutzer ist noch kein Gerät registriert. Hier sehen Sie später die wichtigisten Informationen über Ihr Gerät.'
+register.title: 'Helping Call- Registrieren'
+error.title: 'Helping Call- Fehler'
+register.title.select: Anrede
+register.title.man: Mann
+register.title.woman: Frau
+register.title.divers: Divers
+setpassword.title: 'Helping Call- Passwort eingeben'

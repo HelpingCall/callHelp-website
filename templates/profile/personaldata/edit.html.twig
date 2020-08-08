@@ -46,10 +46,16 @@
                         {% elseif type is same as ('contact') %}
 
                             {{ form_start(form) }}
+                            <div class="form-group">
+                                <div class="form-row col-md-12">
+                                    {{ form_widget(form.title, { 'attr': {'class': 'col-md-12'} })}}
+                                </div>
+                            </div>
 
                             {{ form_row(form.firstname) }}
                             {{ form_row(form.lastname)}}
                             {{ form_row(form.email)}}
+
                             {{ form_row(form.telephonenumber)}}
 
                             <button type="submit" class="btn btn-primary">{{'button.save'|trans}}</button>

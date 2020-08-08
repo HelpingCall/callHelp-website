@@ -4,6 +4,7 @@ namespace App\Forms;
 
 use App\Entity\Helper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,6 +23,14 @@ final class HelperType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label_format' => 'helper.edit.%name%',
+            ])
+            ->add('title', ChoiceType::class, [
+                'choices' => [
+                    'Herr' => 'Herr',
+                    'Frau' => 'Frau',
+                    'Divers' => 'Divers',
+                ],
+                'label' => false,
             ]);
     }
 

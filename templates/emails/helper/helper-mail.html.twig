@@ -1,7 +1,7 @@
 {% extends 'emails/mail_base.html.twig' %}
 {% block body %}
     {% embed 'emails/blocks/1-col.twig' %}
-        {% block title %}{{ 'mail.helper.speech'|trans }} {{ name }}{% endblock %}
+        {% block title %}{{ title }} {{ name }}{% endblock %}
         {% block body %}
             <p>{{ 'mail.acount-help.help.text'|trans }}</p>
             <p>

@@ -90,6 +90,15 @@ class Customer
     private $telephonenumber;
 
     /**
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
+     */
+    private $title;
+
+    /**
      * @var UuidInterface|null
      * @ORM\Column(type="uuid", unique=true)
      */
@@ -204,6 +213,18 @@ class Customer
     public function setUserID(UuidInterface $userID): self
     {
         $this->userID = $userID;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

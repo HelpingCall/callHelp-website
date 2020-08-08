@@ -4,6 +4,7 @@ namespace App\Forms;
 
 use App\Entity\Invitation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,14 @@ class RegisterType extends AbstractType
             ->add('housenumber')
             ->add('zipcode')
             ->add('city')
-            ->add('telephonenumber');
+            ->add('telephonenumber')
+            ->add('title', ChoiceType::class, [
+                'choices' => [
+                    'Herr' => 'Herr',
+                    'Frau' => 'Frau',
+                    'Divers' => 'Divers',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HelperRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HelperRepository::class)
@@ -31,6 +32,15 @@ class Helper
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
+     */
+    private $title;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="helpers")
@@ -91,6 +101,18 @@ class Helper
         return $this;
     }
 
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
     public function toArray()
     {
         return [
@@ -98,6 +120,7 @@ class Helper
             'firstName' => $this->getFirstName(),
             'lastName' => $this->getLastName(),
             'email' => $this->getEmail(),
+            'title' => $this->getTitle(),
             'userID' => $this->getUserid()->getId(),
         ];
     }

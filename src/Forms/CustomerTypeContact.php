@@ -4,6 +4,7 @@ namespace App\Forms;
 
 use App\Entity\Customer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,6 +28,14 @@ class CustomerTypeContact extends AbstractType
             ])
             ->add('telephonenumber', TelType::class, [
                 'label_format' => 'customer.contact.edit.%name%',
+            ])
+            ->add('title', ChoiceType::class, [
+                'choices' => [
+                    'Herr' => 'Herr',
+                    'Frau' => 'Frau',
+                    'Divers' => 'Divers',
+                ],
+                'label' => false,
             ]);
     }
 

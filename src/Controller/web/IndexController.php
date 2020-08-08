@@ -114,7 +114,6 @@ final class IndexController extends AbstractController
      */
     public function download(Request $request): Response
     {
-
         return $this->redirectToRoute('web_index');
     }
 }
