@@ -44,7 +44,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/arm", name="arm", methods={"GET"})
+     * @Route("/arm", name="arm", methods={"POST"})
      */
     public function arm(Request $request): Response
     {
@@ -105,7 +105,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/disarm", name="disarm", methods={"GET"})
+     * @Route("/disarm", name="disarm", methods={"POST"})
      */
     public function disarm(Request $request): Response
     {
@@ -160,7 +160,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/RegisterDevice", name="RegisterDevice", methods={"GET"})
+     * @Route("/RegisterDevice", name="RegisterDevice", methods={"POST"})
      */
     public function RegisterDevice(Request $request): Response
     {
@@ -205,7 +205,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="login", methods={"GET"})
+     * @Route("/login", name="login", methods={"POST"})
      */
     public function login(Request $request): Response
     {
@@ -289,7 +289,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/addHelper", name="add_helper", methods={"GET"})
+     * @Route("/addHelper", name="add_helper", methods={"POST"})
      */
     public function addHelper(Request $request): Response
     {
@@ -347,7 +347,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/addMedical", name="add_medical", methods={"GET"})
+     * @Route("/addMedical", name="add_medical", methods={"POST"})
      */
     public function addMedical(Request $request): Response
     {
@@ -404,7 +404,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllHelper", name="get_all_Helper", methods={"GET"})
+     * @Route("/getAllHelper", name="get_all_Helper", methods={"POST"})
      */
     public function getAllHelper(Request $request): JSONResponse
     {
@@ -444,7 +444,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllMedical", name="get_all_Medical", methods={"GET"})
+     * @Route("/getAllMedical", name="get_all_Medical", methods={"POST"})
      */
     public function getAllMedical(Request $request): Response
     {
@@ -484,7 +484,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getMedical", name="get_Medical", methods={"GET"})
+     * @Route("/getMedical", name="get_Medical", methods={"POST"})
      */
     public function getMedical(Request $request): Response
     {
@@ -533,7 +533,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getHelper", name="get_Helper", methods={"GET"})
+     * @Route("/getHelper", name="get_Helper", methods={"POST"})
      */
     public function getHelper(Request $request): Response
     {
@@ -584,7 +584,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/updateMedical", name="update_Medical", methods={"GET"})
+     * @Route("/updateMedical", name="update_Medical", methods={"POST"})
      */
     public function updateMedical(Request $request): Response
     {
@@ -639,7 +639,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/updateHelper", name="update_Helper", methods={"GET"})
+     * @Route("/updateHelper", name="update_Helper", methods={"POST"})
      */
     public function updateHelper(Request $request): Response
     {
@@ -691,7 +691,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/deleteMedical", name="delete_Medical", methods={"GET"})
+     * @Route("/deleteMedical", name="delete_Medical", methods={"POST"})
      */
     public function deleteMedical(Request $request): Response
     {
@@ -741,7 +741,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/deleteHelper", name="delete_Helper", methods={"GET"})
+     * @Route("/deleteHelper", name="delete_Helper", methods={"POST"})
      */
     public function deleteHelper(Request $request): Response
     {
