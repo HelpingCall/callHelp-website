@@ -1,0 +1,57 @@
+Index: src/Controller/web/IndexController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Controller\\web;\r\n\r\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\r\nuse Symfony\\Component\\HttpFoundation\\Request;\r\nuse Symfony\\Component\\HttpFoundation\\Response;\r\nuse Symfony\\Component\\Routing\\Annotation\\Route;\r\nuse Symfony\\Component\\Routing\\RouterInterface;\r\n\r\nfinal class IndexController extends AbstractController\r\n{\r\n    /**\r\n     * @var RouterInterface\r\n     */\r\n    private $router;\r\n\r\n    public function __construct(\r\n        RouterInterface $router\r\n    ) {\r\n        $this->router = $router;\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/\", name=\"index\", methods={\"GET\"})\r\n     */\r\n    public function index(Request $request): Response\r\n    {\r\n        return $this->render('web/index/index.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/privacy\", name=\"privacy\", methods={\"GET\"})\r\n     */\r\n    public function privacy(Request $request): Response\r\n    {\r\n        return $this->render('web/static/privacy.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/imprint\", name=\"imprint\", methods={\"GET\"})\r\n     */\r\n    public function imprint(Request $request): Response\r\n    {\r\n        return $this->render('web/static/imprint.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/feature\", name=\"feature\", methods={\"GET\"})\r\n     */\r\n    public function feature(Request $request): Response\r\n    {\r\n        return $this->render('feature.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/services\", name=\"services\", methods={\"GET\"})\r\n     */\r\n    public function services(Request $request): Response\r\n    {\r\n        return $this->render('services.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/pricing\", name=\"pricings\", methods={\"GET\"})\r\n     */\r\n    public function pricing(Request $request): Response\r\n    {\r\n        return $this->render('pricing.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/contact\", name=\"contact\", methods={\"GET\"})\r\n     */\r\n    public function contact(Request $request): Response\r\n    {\r\n        return $this->render('contact.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/blog\", name=\"blog\", methods={\"GET\"})\r\n     */\r\n    public function blog(Request $request): Response\r\n    {\r\n        return $this->render('blog.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/single-blog\", name=\"single-blog\", methods={\"GET\"})\r\n     */\r\n    public function sblog(Request $request): Response\r\n    {\r\n        return $this->render('single-blog.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/elements\", name=\"elements\", methods={\"GET\"})\r\n     */\r\n    public function elements(Request $request): Response\r\n    {\r\n        return $this->render('elements.html.twig');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/order\", name=\"order\", methods={\"GET\"})\r\n     */\r\n    public function order(Request $request): Response\r\n    {\r\n        return $this->redirectToRoute('web_index');\r\n    }\r\n\r\n    /**\r\n     * @Route(\"/download\", name=\"download\", methods={\"GET\"})\r\n     */\r\n    public function download(Request $request): Response\r\n    {\r\n        return $this->redirectToRoute('web_index');\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Controller/web/IndexController.php	(revision c9e7d0060a09dac34ee9f168bb7b04e5aee47633)
++++ src/Controller/web/IndexController.php	(date 1600346832341)
+@@ -58,7 +58,7 @@
+      */
+     public function services(Request $request): Response
+     {
+-        return $this->render('services.html.twig');
++        return $this->render('web/index/_service-area.html.twig');
+     }
+ 
+     /**
+@@ -66,7 +66,7 @@
+      */
+     public function pricing(Request $request): Response
+     {
+-        return $this->render('pricing.html.twig');
++        return $this->render('web/index/_best-pricing.html.twig');
+     }
+ 
+     /**
+@@ -77,29 +77,7 @@
+         return $this->render('contact.html.twig');
+     }
+ 
+-    /**
+-     * @Route("/blog", name="blog", methods={"GET"})
+-     */
+-    public function blog(Request $request): Response
+-    {
+-        return $this->render('blog.html.twig');
+-    }
+ 
+-    /**
+-     * @Route("/single-blog", name="single-blog", methods={"GET"})
+-     */
+-    public function sblog(Request $request): Response
+-    {
+-        return $this->render('single-blog.html.twig');
+-    }
+-
+-    /**
+-     * @Route("/elements", name="elements", methods={"GET"})
+-     */
+-    public function elements(Request $request): Response
+-    {
+-        return $this->render('elements.html.twig');
+-    }
+ 
+     /**
+      * @Route("/order", name="order", methods={"GET"})
