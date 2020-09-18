@@ -55,6 +55,8 @@ class APIController extends AbstractController
             $jwt = $data['jwt'];
             $lat = $data['latitude'];
             $long = $data['longitude'];
+            $deviceId = $data['deviceID'];
+            $batteryState = $data['batteryState'];
         } catch (Exception $e) {
             $response->setData(['success' => false]);
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -97,7 +99,16 @@ class APIController extends AbstractController
                 'medicals' => $medicals,
             ]), $header);
         }
+        try {
+            $device = $this->getDoctrine()
+                ->getRepository(Device::class)
+                ->findOneBy($deviceId);
+            $device->setBatteryState($batteryState);
 
+            $this->entityManager->flush();
+        } catch (Exception $e) {
+         
+        }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
 
@@ -116,6 +127,8 @@ class APIController extends AbstractController
         try {
             $userId = $data['userID'];
             $jwt = $data['jwt'];
+            $deviceId = $data['deviceID'];
+            $batteryState = $data['batteryState'];
         } catch (Exception $e) {
             $response->setData(['success' => false]);
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -152,7 +165,16 @@ class APIController extends AbstractController
                 'title' => $title,
             ]), $header);
         }
+        try {
+            $device = $this->getDoctrine()
+                ->getRepository(Device::class)
+                ->findOneBy($deviceId);
+            $device->setBatteryState($batteryState);
 
+            $this->entityManager->flush();
+        } catch (Exception $e) {
+         
+        }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
 
