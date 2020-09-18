@@ -200,7 +200,7 @@
     var client_list = $('.app-active');
     if(client_list.length){
       client_list.owlCarousel({
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         loop: true,
         autoplay:true,
@@ -208,6 +208,7 @@
         smartSpeed:2000,
         dots: false,
         margin: 15,
+        autoHeight:true,
         nav  : false,
         navText : ["<i class='fas fa-arrow-left'></i>","<i class='fas fa-arrow-right'></i>"],
         autoplayHoverPause: true,
@@ -222,7 +223,7 @@
             items: 2
           },
           1200:{
-            items: 4
+            items: 3
           }
         }
       });
