@@ -107,7 +107,6 @@ class APIController extends AbstractController
 
             $this->entityManager->flush();
         } catch (Exception $e) {
-         
         }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
@@ -173,7 +172,6 @@ class APIController extends AbstractController
 
             $this->entityManager->flush();
         } catch (Exception $e) {
-         
         }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
