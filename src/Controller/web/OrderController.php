@@ -12,7 +12,6 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -77,7 +76,6 @@ class OrderController extends AbstractController
 
         return $this->render('web\order.html.twig', [
             'offers' => $offers,
-            'orderSent' => $request->get('orderSent'),
         ]);
     }
 
@@ -172,7 +170,6 @@ class OrderController extends AbstractController
         $err = curl_error($ch);
         curl_close($ch);
         file_put_contents('/var/www/html/invoices/invoice-'.$orders->getId().'.pdf', $response);
-        //$this->download($response, $orders->getID());
 
         $message = $this->renderView('emails/order.twig', [
             'salutation' => $salutation,
@@ -190,10 +187,7 @@ class OrderController extends AbstractController
             'comment' => $request->get('comment') ?? '',
         ]);
 
-
-        $this->sendMail($message, $request->get('email'),$orders->getId());
-
-
+        $this->sendMail($message, $request->get('email'), $orders->getId());
 
         /** @var Invitation $invitation */
         $invitation = new Invitation();
@@ -213,19 +207,9 @@ class OrderController extends AbstractController
         return $this->render('web/register/confirmation-necessary.twig');
     }
 
-    public function download($repsonse, $invoice_number)
+    public function sendMail($html, $recipient, $invoice_number)
     {
-        file_put_contents('/var/www/html/invoices/invoice-'.$invoice_number.'.pdf', $repsonse);
-        $file = new File('/var/www/html/invoices/invoice-'.$invoice_number.'.pdf');
-        $this->file($file);
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename=HelpingCall-invoice-'.$invoice_number.'.pdf');
-        include '/var/www/html/invoices/invoice-'.$invoice_number.'.pdf';
-    }
-
-    public function sendMail($html,$recipient,$invoice_number)
-    {
-        $mail = new PHPMailer;
+        $mail = new PHPMailer();
 
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -247,10 +231,9 @@ class OrderController extends AbstractController
         $mail->isHTML(true);                                  // Set email format to HTML
 
         $mail->Subject = 'Ihre Bestellung bei HelpingCall.de';
-        $mail->Body    = $html;
+        $mail->Body = $html;
         $mail->CharSet = 'UTF-8';
 
         $mail->send();
-
     }
 }

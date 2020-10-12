@@ -106,14 +106,6 @@ final class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/order", name="order", methods={"GET"})
-     */
-    public function order(Request $request): Response
-    {
-        return $this->redirectToRoute('web_index');
-    }
-
-    /**
      * @Route("/download", name="download", methods={"GET"})
      */
     public function download(Request $request): Response
