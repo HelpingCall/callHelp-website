@@ -1,0 +1,531 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script>
+        function m(){
+            window.rechnungssummme=0;//declaring global variable by window object
+        }
+        m();
+        function add(price, amount){
+
+            window.rechnungssummme = window.rechnungssummme + (parseFloat(amount)*parseFloat(price));
+
+            document.getElementById("sum").innerHTML =formatter.format(window.rechnungssummme); /* $2,500.00 */
+        }
+
+        var formatter = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR',
+        });
+
+
+    </script>
+
+
+        <!-- ======= Contact Section ======= -->
+    <section class="best-features-area section-padd4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card" id="register-info-card">
+                            <div class="card-body">
+                                <h4>Hinweis</h4>
+                                <p>
+                                    Beachten Sie bitte, dass es durch drücken des Sendenbuttons zu einer kostenpflichtigen Bestellung kommen kann.
+                                    Ihre angegebenen persönlichen Daten werden nur zu Bestellzwecken gespeichert und nicht an Dritte weitergegeben.
+                                </p>
+                                <p>
+                                    <span id="registration-intro" class="btn btn-success btn-lg btn-block"> Bestellung starten</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" id="register-card">
+                            <div class="card-body">
+                                <form action="{{ path('web_order') }}" method="post" id="wizard" class="form">
+                                    <!-- SECTION 1 -->
+                                    <h2></h2>
+                                    <section>
+                                        <div class="inner">
+                                            <div class="form-content">
+                                                <div class="form-header">
+                                                    <h3 style="color:#000;">Persönliche Daten</h3>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="col form-group col-md-6">
+                                                        <label for="salutation">Anrede*</label>
+                                                        <select id="salutation" name="salutation"
+                                                                class="required form-control">
+                                                            <option value="Herr">Herr</option>
+                                                            <option value="Frau">Frau</option>
+                                                            <option value="Divers">Divers</option>
+                                                            <option value="Firma">Firma</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col form-group col-md-6">
+                                                        <label for="title">Titel</label>
+                                                        <select id="title" name="title"
+                                                                class="form-control">
+                                                            <option value=""></option>
+                                                            <option value="Dr.">Dr.</option>
+                                                            <option value="Prof.">Prof.</option>
+                                                            <option value="Dipl. Ing.">Dipl. Ing.</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="firstname">Vorname*</label>
+                                                        <input type="text" id="firstname" name="firstname"
+                                                               placeholder="Vorname"
+                                                               class="form-control required">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastname">Nachname*</label>
+                                                        <input type="text" id="lastname" placeholder="Nachname"
+                                                               name="lastname"
+                                                               class="form-control required">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col form-group">
+                                                        <label for="email">E-Mail*</label>
+                                                        <input type="email" id="email" name="email" placeholder="E-Mail"
+                                                               class="form-control required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- SECTION 2 -->
+                                    <h2></h2>
+                                    <section>
+                                        <div class="inner">
+                                            <div class="form-content">
+                                                <div class="form-header">
+                                                    <h3 style="color:#000;">Kontaktdaten</h3>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-9 form-group">
+                                                        <label for="street">Straße*</label>
+                                                        <input type="text" id="street" name="street"
+                                                               placeholder="Straße"
+                                                               class="form-control required">
+                                                    </div>
+                                                    <div class="col-3 form-group">
+                                                        <label for="housenumber">&nbsp;</label>
+                                                        <input type="text" id="housenumber" name="housenumber" maxlength="5"
+                                                               placeholder="Nr." class="form-control required">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-12 form-group">
+                                                        <label for="zipcode">Postleitzahl*</label>
+                                                        <input type="text" placeholder="Postleitzahl" name="zipcode" id="zipcode" maxlength="5"
+                                                               class="form-control required">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-12 form-group">
+                                                        <label for="city">Stadt*</label>
+                                                        <input type="text" id="city" name="city" placeholder="Stadt"
+                                                               class="form-control required">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="phone">Telefonnummer*</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">+49</span>
+                                                            </div>
+                                                            <input type="text" id="phone" name="phone" maxlength="15"
+                                                                   placeholder="Telefonnummer (Mobil oder Festnetz)"
+                                                                   class="form-control required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+
+                                    <!-- SECTION 3 -->
+                                    <h2></h2>
+                                    <section>
+                                        <div class="inner">
+                                            <div class="form-content">
+                                                <div class="form-header">
+                                                    <h3 style="color:#000;">Bestellung</h3>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col form-group">
+                                                        {% for offer in offers %}
+                                                            <div class="form-check">
+                                                                <input class="form-check-input disabled"  type="checkbox" value="{{offer.name}}" id="{{offer.name}}" onclick="
+                                                                        if (this.checked == true){
+                                                                            document.getElementById('amount-{{ offer.id }}').style.display = 'block';
+                                                                            document.getElementById('amount-{{ offer.id }}').removeClass();
+                                                                            document.getElementById('amount-{{ offer.id }}').addClass('form-control required');
+                                                                            this.removeClass();
+                                                                            this.addClass('form-check-input required');
+                                                                        }
+                                                                        else {
+                                                                            document.getElementById('amount-{{ offer.id }}').style.display = 'none';
+                                                                            document.getElementById('amount-{{ offer.id }}').removeClass();
+                                                                            document.getElementById('amount-{{ offer.id }}').addClass('form-control disabled');
+                                                                            this.removeClass();
+                                                                            this.addClass('form-check-input disabled');
+                                                                        }  ">
+                                                                <label class="form-check-label" for="{{offer.name}}"><a data-toggle="modal" data-target="#infos-{{ offer.id }}" data-backdrop="static" style="text-decoration: underline; " data-whatever="{{ offer.id }}">{{offer.name}} </a>für {{offer.price}} €</label>
+                                                                <div id="amount-{{ offer.id }}" class="col-sm-4"style="display:none">
+                                                                        <input type="text" id="amount-{{ offer.id }}" name="amount-{{ offer.id }}" maxlength="5"
+                                                                               placeholder="Menge" class="form-control disabled" onfocusout="add({{ offer.price | replace({',': '.'})}},this.value)">
+
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col form-group">
+                                                    <label for="comment">Bemerkung</label>
+                                                    <textarea type="text" id="comment" name="comment" placeholder="Bemerkung" rows="3"
+                                                              class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    <label class="form-check-label" for="acceptTerms">
+                                                        Rechnungssumme: <span id="sum" ></span>
+                                                    </label>
+                                                </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group form-check">
+                                                        <label class="form-check-label" for="acceptTerms">
+                                                            Mit der Bestellung akzeptieren Sie unsere Datenschutzrichtlinien. Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer und
+                                                            gegbenenfalls <a data-toggle="modal" data-target="#shipping" data-backdrop="static"style="text-decoration: underline;">
+                                                                zzgl. Versandkosten.
+                                                            </a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <input type="hidden" name="invoice_number" id="invoice_number" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bestellmöglichkeiten</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            per Post oder Telefon an:
+                            <div class="row">
+                                <div class="col-sm-5 offset-1">
+                                    Holger Renè Cullmann
+                                </div>
+                                <div class="col-sm-5">
+                                    Fax: 06781/ 406 46 74
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5 offset-1">
+                                    Neuweg 35
+                                </div>
+                                <div class="col-sm-5">
+                                    Tel.: 06781/ 406 46 75
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5 offset-1">
+                                    55743 Idar-Oberstein
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            per Email an:
+                            <div class="row">
+                                <div class="col-sm-5 offset-1">
+                                    <a
+                                            href="javascript:window.location.href = 'mailto:' + ['bestellung','kaltwassertuch.de.io'].join('@')"><span
+                                                class="text">bestellung@kaltwassertuch.de</span></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+<!-- Modal -->
+{%  for offer in offers %}
+    <div class="modal fade" id="infos-{{ offer.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <section id="pricing" class="pricing">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-6 offset-2">
+                                    <div class="box" data-aos="fade-up">
+                                        {% if 'Angebot' in offer.name %}
+                                            <h3>{{offer.name}}</h3>
+                                            <h4 style="color:red"> {{offer.price}} €</h4>
+                                            <span class="advanced">Angebot</span>
+                                        {% else %}
+                                            <h3>{{offer.name}}</h3>
+                                            <h4>{{offer.price}} €</h4>
+                                        {% endif %}
+                                        <ul>
+                                            {% set infos= offer.infos|split(';') %}
+                                            {% for info in infos %}
+                                               <li>{{ info }}</li>
+                                            {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                                    </section>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+{% endfor %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="shipping" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Versandkosten</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            Deutschland und Europa EU
+                            <span class="offset-sm-6">
+                                &nbsp;&nbsp;&nbsp;3 €
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            Welt non EU
+                            <span class="offset-sm-9">
+                                7 €
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+{% endblock %}
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+        var form = $("#wizard");
+        var stepChanged = false;
+
+        $(function () {
+            $('#registration-intro').click(function () {
+                $('#register-info-card').hide();
+                $('#register-card').show();
+
+            });
+
+
+            $.validator.addMethod('phonecheck', function (value, element) {
+                var regex = /^\(?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})[-. ]?([0-9]{2})?([0-9]{1})?$/;
+                var regex2 = /^\(?([0-9]{4})\)?[-. ]?([0-9]{7})([0-9]{1})?$/;
+                var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})[-. ]?([0-9]{2})?([0-9]{1})?$/;
+                var phoneno2 = /^\+?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{7})[-. ]?([0-9]{1})?$/;
+                if (regex.test(value) || phoneno.test(value) || regex2.test(value) || phoneno2.test(value)) {
+
+                    return true;
+                } else {
+
+                    return false;
+                }
+            }, "{{ 'register.telephone-number-error'|trans }}");
+
+            $.validator.addMethod('zipcodeCheck', function (value, element) {
+                var regex = /^[0-9]{5}$/
+
+                if (regex.test(value)) {
+                    return true;
+
+                } else {
+                    return false;
+                }
+
+
+            }, "{{ 'register.postal-code-error'|trans }}");
+
+            $.validator.messages.required = "{{ 'register.empty-error'|trans }}";
+            $.validator.messages.email = "{{ 'register.email-error'|trans }}";
+            $.validator.setDefaults({
+                highlight: function (element) {
+                    $(element).closest('.form-group').find(".form-control:first").addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-group').find(".form-control:first").removeClass('is-invalid');
+                    $(element).closest('.form-group').find(".form-control:first").addClass('is-valid');
+                },
+                errorElement: 'span',
+                errorClass: 'invalid-feedback',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                rules: {
+                    phone: {
+                        phonecheck: true
+                    },
+                    zipcode: {
+                        zipcodeCheck: true
+                    }
+                }
+            });
+
+            $("#wizard").steps({
+                headerTag: "h2",
+                bodyTag: "section",
+                enableAllSteps: true,
+                transitionEffect: "fade",
+                transitionEffectSpeed: 300,
+                labels: {
+                    finish: "{{ 'register.button.finish'|trans }}",
+                    next: "{{ 'register.button.next'|trans }}",
+                    previous: "{{ 'register.button.previous'|trans }}"
+                },
+                onInit: function (event, currentIndex) {
+                    $('.actions ul li a').addClass('btn btn-primary btn-lg');
+                    $('.actions ul li:last-child a').removeClass('btn-primary').addClass('btn-success');
+                },
+                onFinished: function (event, currentIndex) {
+                    document.getElementById("wizard").submit();
+                },
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    if (currentIndex > newIndex) {
+                        stepChanged = true;
+                        return true;
+                    }
+                    if (currentIndex < newIndex) {
+                        // To remove error styles
+                        form.find(".body:eq(" + newIndex + ") label.error").remove();
+                        form.find(".body:eq(" + newIndex + ") .error").removeClass("form-control is-invalid");
+                    }
+
+                    stepChanged = form.valid();
+                    return form.valid();
+                },
+                onFinishing: function (event, currentIndex) {
+                    form.validate().settings.ignore = ":disabled";
+
+                    $('#ftco-loader').addClass('show');
+
+                    return form.valid();
+                }
+            });
+            $('.wizard > .steps li a').click(function () {
+                if (stepChanged) {
+                    $(this).parent().addClass('checked');
+                    $(this).parent().prevAll().addClass('checked');
+                    $(this).parent().nextAll().removeClass('checked');
+                }
+
+            });
+            // Custome Jquery Step Button
+            $('.forward').click(function () {
+                $("#wizard").steps('next');
+            })
+            $('.backward').click(function () {
+                $("#wizard").steps('previous');
+            })
+        });
+
+
+
+    </script>
+{% endblock %}
+
+

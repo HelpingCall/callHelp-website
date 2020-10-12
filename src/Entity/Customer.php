@@ -104,6 +104,15 @@ class Customer
      */
     private $userID;
 
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
+     */
+    private $salutation;
+
     public function getId(): ?UuidInterface
     {
         return $this->id;
@@ -225,6 +234,18 @@ class Customer
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSalutation(): ?string
+    {
+        return $this->salutation;
+    }
+
+    public function setSalutation(string $salutation): self
+    {
+        $this->salutation = $salutation;
 
         return $this;
     }

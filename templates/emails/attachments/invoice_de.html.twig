@@ -1,0 +1,230 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Rechnung</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/bootstrap.min.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/owl.carousel.min.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/flaticon.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/slicknav.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/animate.min.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/magnific-popup.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/fontawesome-all.min.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/themify-icons.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/slick.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/nice-select.css'))}}" type="text/css">
+    <link rel="stylesheet" href="{{absolute_url(asset('assets/css/style.css'))}}" type="text/css">
+</head>
+
+<body>
+    <div class="container" style="padding-top: 1%">
+        <div class="row justify-content-end">
+            <div class="col-md-6 ">
+                <div class="row justify-content-end">
+                    Campusallee,12
+                </div>
+                <div class="row justify-content-end">
+                    32657,Lemgo
+                </div>
+                <div class="row justify-content-end">
+                    Tel: +49 5261 702 0
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <img src="{{ absolute_url(asset('assets/img/logo/logo-mysimpleshow.png')) }}" alt="" width="30%" class="float-left">
+                <div class="row">
+
+                </div>
+                <h1>HelpingCall</h1>
+                <div class="row">
+                    <h1>Invoice</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="color:#8F1BDC;  height: 1px; background: #8F1BDC;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm">
+                        BILL TO:
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            Invoice  No.:
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        {{ firstname }} {{ lastname }}
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            {{ invoice_number }}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        {{ street }} {{ housenumber }}
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            Date:
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        {{ city }}
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            {{ date_now }}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        {{ zipcode }}
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            INVOICE DUE DATE:
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        {{ country }}
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            {{ date_due }}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="color:#8F1BDC;  height: 1px; background: #8F1BDC;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm">
+                        Pos:
+                    </div>
+                    <div class="col-sm">
+                        Description:
+                    </div>
+                    <div class="col-sm">
+                        Quantity:
+                    </div>
+                    <div class="col-sm">
+                        <div class="d-flex justify-content-sm-end">
+                            Price:
+                        </div>
+
+                    </div>
+                </div>
+
+                {% set pos=1 %}
+                {% for order in orders %}
+                    <div class="row">
+                        <div class="col-sm">
+                            {{ pos }}
+                        </div>
+                        <div class="col-sm">
+                            {{ order.name }}
+                        </div>
+                        <div class="col-sm">
+                            {{ order.amount }}
+                        </div>
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-sm-end">
+                                {{ order.price }} €
+                            </div>
+                        </div>
+                    </div>
+                    {% set pos =pos+1 %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm offset-md-10">
+                        Subtotal:
+                    </div>
+                    <div class="d-flex justify-content-sm-end">
+                        {{ subtotal }} €
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm offset-md-10">
+                        Taxes:
+                    </div>
+                    <div class="d-flex justify-content-sm-end">
+                        {{ taxes }} €
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm offset-md-10">
+                        Total:
+                    </div>
+                    <div class="d-flex justify-content-sm-end">
+                        {{ total }} €
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm offset-md-10">
+                        Amount Due:
+                    </div>
+                    <div class="d-flex justify-content-sm-end">
+                        {{ total }} €
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

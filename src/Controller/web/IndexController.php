@@ -90,7 +90,11 @@ final class IndexController extends AbstractController
      */
     public function sblog(Request $request): Response
     {
-        return $this->render('single-blog.html.twig');
+        $response = $this->forward('App\Services\CreateInvoice::index');
+
+        // ... further modify the response or return it directly
+
+        return $response;
     }
 
     /**

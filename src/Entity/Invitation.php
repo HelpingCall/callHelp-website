@@ -120,6 +120,15 @@ class Invitation
      */
     private $title;
 
+    /**
+     * @var string|null
+     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max="255")
+     */
+    private $salutation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -265,6 +274,18 @@ class Invitation
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSalutation(): ?string
+    {
+        return $this->salutation;
+    }
+
+    public function setSalutation(string $salutation): self
+    {
+        $this->salutation = $salutation;
 
         return $this;
     }

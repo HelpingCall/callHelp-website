@@ -1,0 +1,72 @@
+{% extends 'emails/mail_base.html.twig' %}
+{% block body %}
+    {% embed 'emails/blocks/1-col.twig' %}
+        {% block title %}{{salutation}} {{ title }} {{ lastname }}, herzlichen Dank für Ihre Bestellung.{% endblock %}
+        {% block body %}
+            <p>Im folgendem finden Sie eine Übersicht über Ihre Bestellung:</p>
+            <table>
+                <tr>
+                    <th style="text-align: left">Pos.</th>
+                    <th style="text-align: left">Artikel</th>
+                    <th style="text-align: left">Anzahl</th>
+                    <th style="text-align: left">Mengeneinheit</th>
+                    <th style="text-align: left">Text</th>
+                    <th style="text-align: left">Einzelpreis</th>
+                </tr>
+                {% set pos=1 %}
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ pos }} </td>
+                        <td>{{ order.name }} </td>
+                        <td >{{ order.amount }}</td>
+                        <td>Stk.</td>
+                        <td></td>
+                        <td>{{ order.price }} </td>
+
+                    </tr>
+                    {% set pos =pos+1 %}
+                {% endfor %}
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Gesamtsumme: {{ total }} </td>
+                </tr>
+            </table>
+
+            <p>
+                Bitte prüfen Sie ob Ihre Versandadresse stimmt: </br>
+
+
+                    <span  style="white-space: pre">    Anrede: {{ salutation }}</span> </br>
+                    {% if title is not same as ('') %}
+                        <span  style="white-space: pre">    Titel: {{ title }}</span> </br>
+                    {% endif %}
+                    <span  style="white-space: pre">    Vorname: {{ firstname }}</span> </br>
+                    <span  style="white-space: pre">    Nachname: {{ lastname }}</span> </br>
+                    <span  style="white-space: pre">    Strasse: {{ street }} {{ housenumber }}</span> </br>
+                    <span  style="white-space: pre">    Stadt:{{ city }}</span> </br>
+                    <span  style="white-space: pre">    Postleitzahl:{{ zipcode }}</span> </br>
+                    <span  style="white-space: pre">    Telefon: {{ phone }} </span> </br>
+                    <span  style="white-space: pre">    E-Mail: {{ emailAddress }}</span> </br>
+
+            </p>
+            <p>
+            <h3>Bemerkungen:</h3>
+            {{ comment }}
+            </p>
+            <p>
+                Mit freundlichen Grüßen,
+
+                Ihre Team von HelpingCall.de
+            </p>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

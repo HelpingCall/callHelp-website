@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
@@ -39,7 +40,10 @@ class Order
     private $street;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string|null
+     * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Assert\Length(max="10")
      */
     private $Housenumber;
 
