@@ -107,7 +107,6 @@ class APIController extends AbstractController
 
             $this->entityManager->flush();
         } catch (Exception $e) {
-         
         }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
@@ -173,7 +172,6 @@ class APIController extends AbstractController
 
             $this->entityManager->flush();
         } catch (Exception $e) {
-         
         }
         $response->setData(['success' => true]);
         $response->setStatusCode(Response::HTTP_OK);
@@ -351,7 +349,7 @@ class APIController extends AbstractController
             $helper->setFirstname($helperFirstname);
             $helper->setLastname($helperLastname);
 
-            $helper->setUserid($userId);
+            $helper->setUserid($user);
 
             $this->entityManager->persist($helper);
 
@@ -426,7 +424,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllHelper", name="get_all_Helper", methods={"POST"})
+     * @Route("/getAllHelper", name="get_all_Helper", methods={"GET"})
      */
     public function getAllHelper(Request $request): JSONResponse
     {
@@ -466,7 +464,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllMedical", name="get_all_Medical", methods={"POST"})
+     * @Route("/getAllMedical", name="get_all_Medical", methods={"GET"})
      */
     public function getAllMedical(Request $request): Response
     {
@@ -506,7 +504,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getMedical", name="get_Medical", methods={"POST"})
+     * @Route("/getMedical", name="get_Medical", methods={"GET"})
      */
     public function getMedical(Request $request): Response
     {
@@ -555,7 +553,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getHelper", name="get_Helper", methods={"POST"})
+     * @Route("/getHelper", name="get_Helper", methods={"GET"})
      */
     public function getHelper(Request $request): Response
     {

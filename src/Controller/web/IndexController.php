@@ -90,7 +90,11 @@ final class IndexController extends AbstractController
      */
     public function sblog(Request $request): Response
     {
-        return $this->render('single-blog.html.twig');
+        $response = $this->forward('App\Services\CreateInvoice::index');
+
+        // ... further modify the response or return it directly
+
+        return $response;
     }
 
     /**
@@ -99,14 +103,6 @@ final class IndexController extends AbstractController
     public function elements(Request $request): Response
     {
         return $this->render('elements.html.twig');
-    }
-
-    /**
-     * @Route("/order", name="order", methods={"GET"})
-     */
-    public function order(Request $request): Response
-    {
-        return $this->redirectToRoute('web_index');
     }
 
     /**

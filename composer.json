@@ -5,12 +5,18 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "curl/curl": "^2.3",
         "doctrine/annotations": "^1.10",
+        "dompdf/dompdf": "^0.8.6",
         "friendsofphp/php-cs-fixer": "^2.16",
+        "knplabs/knp-snappy": "^1.2",
+        "mikehaertl/phpwkhtmltopdf": "^2.4",
+        "mpdf/mpdf": "^8.0",
         "opencage/geocode": "^2.1",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.5",
+        "spipu/html2pdf": "^5.2",
         "symfony/asset": "5.*",
         "symfony/console": "5.*",
         "symfony/dotenv": "5.*",
@@ -26,7 +32,7 @@
         "symfony/twig-bundle": "5.*",
         "symfony/validator": "5.*",
         "symfony/yaml": "5.*",
-        "ext-json": "*"
+      "ext-curl": "*"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.18",
@@ -71,11 +77,5 @@
     },
     "conflict": {
         "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "5.*"
-        }
     }
 }

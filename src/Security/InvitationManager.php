@@ -68,6 +68,8 @@ class InvitationManager extends AbstractController
         $header .= "From: no-reply@babyyodahook.xyz \r\n";
 
         mail($invitation->getEmail(), 'Aktivieren Sie Ihren Zugang für HelpingCall.de', $this->renderView('emails/account-confirm.html.twig', [
+            'salutation' => $invitation->getSalutation(),
+            'title' => $invitation->getTitle(),
             'lastname' => $invitation->getLastname(),
             'confirmLink' => $confirmLink,
         ]), $header);
@@ -106,7 +108,8 @@ class InvitationManager extends AbstractController
         $customer->setHousenumber($invitation->getHousenumber());
         $customer->setZipcode($invitation->getZipcode());
         $customer->setUserID($user->getId());
-
+        $customer->setSalutation($invitation->getSalutation());
+        $customer->setTitle($invitation->getTitle());
         $this->entityManager->persist($customer);
 
         $this->entityManager->remove($invitation);
