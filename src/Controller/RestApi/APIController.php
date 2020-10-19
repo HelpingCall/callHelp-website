@@ -56,7 +56,7 @@ class APIController extends AbstractController
             $lat = $data['latitude'];
             $long = $data['longitude'];
             $deviceId = $data['deviceID'];
-            $batteryState = $data['batteryState'];
+            $batteryState = $data['BatteryState'];
         } catch (Exception $e) {
             $response->setData(['success' => false]);
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -97,12 +97,13 @@ class APIController extends AbstractController
                 'title' => $title,
                 'place' => $result,
                 'medicals' => $medicals,
+                'saluation' => '',
             ]), $header);
         }
         try {
             $device = $this->getDoctrine()
                 ->getRepository(Device::class)
-                ->findOneBy($deviceId);
+                ->findOneBy(array('id'=>$deviceId));
             $device->setBatteryState($batteryState);
 
             $this->entityManager->flush();
@@ -127,7 +128,7 @@ class APIController extends AbstractController
             $userId = $data['userID'];
             $jwt = $data['jwt'];
             $deviceId = $data['deviceID'];
-            $batteryState = $data['batteryState'];
+            $batteryState = $data['BatteryState'];
         } catch (Exception $e) {
             $response->setData(['success' => false]);
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -162,12 +163,13 @@ class APIController extends AbstractController
             mail($email, 'Ein Nutzer benötigt nicht mehr Ihre Hilfe', $this->renderView('emails/helper/helper-mail-disarm.html.twig', [
                 'name' => $name,
                 'title' => $title,
+                'saluation' => '',
             ]), $header);
         }
         try {
             $device = $this->getDoctrine()
                 ->getRepository(Device::class)
-                ->findOneBy($deviceId);
+                ->findOneBy(array('id'=>$deviceId));
             $device->setBatteryState($batteryState);
 
             $this->entityManager->flush();
@@ -322,6 +324,7 @@ class APIController extends AbstractController
             $helperFirstname = $data['firstname'];
             $helperLastname = $data['lastname'];
             $helperEmail = $data['email'];
+            $helperTitle = $data['title'];
         } catch (Exception $e) {
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
             $response->setData(['success' => false]);
@@ -342,13 +345,16 @@ class APIController extends AbstractController
 
             return $response;
         }
+        if (empty($helperTitle)){
+            $helperTitle=null;
+        }
         try {
             $helper = new Helper();
 
             $helper->setEmail($helperEmail);
             $helper->setFirstname($helperFirstname);
             $helper->setLastname($helperLastname);
-
+            $helper->setTitle($helperTitle);
             $helper->setUserid($user);
 
             $this->entityManager->persist($helper);
@@ -424,7 +430,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllHelper", name="get_all_Helper", methods={"GET"})
+     * @Route("/getAllHelper", name="get_all_Helper", methods={"POST"})
      */
     public function getAllHelper(Request $request): JSONResponse
     {
@@ -464,7 +470,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getAllMedical", name="get_all_Medical", methods={"GET"})
+     * @Route("/getAllMedical", name="get_all_Medical", methods={"POST"})
      */
     public function getAllMedical(Request $request): Response
     {
@@ -504,7 +510,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getMedical", name="get_Medical", methods={"GET"})
+     * @Route("/getMedical", name="get_Medical", methods={"POST"})
      */
     public function getMedical(Request $request): Response
     {
@@ -553,7 +559,7 @@ class APIController extends AbstractController
     }
 
     /**
-     * @Route("/getHelper", name="get_Helper", methods={"GET"})
+     * @Route("/getHelper", name="get_Helper", methods={"POST"})
      */
     public function getHelper(Request $request): Response
     {
@@ -744,7 +750,7 @@ class APIController extends AbstractController
 
         try {
             $medical = $this->getDoctrine()
-                ->getRepository(Helper::class)
+                ->getRepository(Medicals::class)
                 ->find($medicalId);
         } catch (Exception $e) {
             $response->setData(['success' => false]);
