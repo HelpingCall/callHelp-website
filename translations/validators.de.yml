@@ -93,6 +93,8 @@ Error: __Error
 'The number of elements in this collection should be a multiple of {{ compared_value }}.': 'Die Anzahl an Elementen in dieser Sammlung sollte ein Vielfaches von {{ compared_value }} sein.'
 'This value should satisfy at least one of the following constraints:': 'Dieser Wert sollte eine der folgenden Bedingungen erfüllen:'
 'Each element of this collection should satisfy its own set of constraints.': 'Jedes Element dieser Sammlung sollte seine eigene Menge an Bedingungen erfüllen.'
+'This value is not a valid International Securities Identification Number (ISIN).': 'Dieser Wert ist keine gültige Internationale Wertpapierkennnummer (ISIN).'
 'This form should not contain extra fields.': 'Dieses Formular sollte keine zusätzlichen Felder enthalten.'
 'The uploaded file was too large. Please try to upload a smaller file.': 'Die hochgeladene Datei ist zu groß. Versuchen Sie bitte eine kleinere Datei hochzuladen.'
 'The CSRF token is invalid. Please try to resubmit the form.': 'Der CSRF-Token ist ungültig. Versuchen Sie bitte das Formular erneut zu senden.'
+'This value is not a valid HTML5 color.': 'Dieser Wert ist keine gültige HTML5 Farbe.'
