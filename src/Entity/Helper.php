@@ -35,10 +35,8 @@ class Helper
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length(max="255")
+     * @ORM\Column(type="string", length=255, nullable=true)
+
      */
     private $title;
 
