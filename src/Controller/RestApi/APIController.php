@@ -103,9 +103,10 @@ class APIController extends AbstractController
         try {
             $device = $this->getDoctrine()
                 ->getRepository(Device::class)
-                ->findOneBy(array('id'=>$deviceId));
+                ->findOneBy(['id' => $deviceId]);
             $device->setBatteryState($batteryState);
-
+            $device->setLastLat($lat);
+            $device->setLastLong($long);
             $this->entityManager->flush();
         } catch (Exception $e) {
         }
@@ -169,7 +170,7 @@ class APIController extends AbstractController
         try {
             $device = $this->getDoctrine()
                 ->getRepository(Device::class)
-                ->findOneBy(array('id'=>$deviceId));
+                ->findOneBy(['id' => $deviceId]);
             $device->setBatteryState($batteryState);
 
             $this->entityManager->flush();
@@ -345,8 +346,8 @@ class APIController extends AbstractController
 
             return $response;
         }
-        if (empty($helperTitle)){
-            $helperTitle=null;
+        if (empty($helperTitle)) {
+            $helperTitle = null;
         }
         try {
             $helper = new Helper();
